@@ -1,3 +1,4 @@
+export const donationLink = "https://gofund.me/97c17c72b";
 export const siteConfig = {
   name: "CB's World Foundation",
   tagline: "Keeping Claudyo's Legacy Alive",
@@ -84,3 +85,17 @@ export const newsPosts = [
 ];
 
 export const contactTypes = ["General contact", "Schools", "Media", "Volunteer", "Support request"];
+
+export const programs = foundationWork.map((item) => ({
+  slug: item.title.toLowerCase().replaceAll(" ", "-"),
+  title: item.title,
+  summary: item.description,
+  description: item.description,
+  image: "/hero/cb-forever-blue.jpg",
+  icon: "💙",
+  outcomes: [
+    "Raise awareness",
+    "Support families",
+    "Create safer communities"
+  ]
+}));

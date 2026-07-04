@@ -1,18 +1,2 @@
-import ImagePlaceholder from '@/components/ImagePlaceholder';
-import PageHero from '@/components/PageHero';
-import Section from '@/components/Section';
-
-export default function ActsPage() {
-  return (
-    <>
-      <PageHero eyebrow="Acts of Kindness" title="Small acts that show families they are not alone" body="This page will highlight care packages, family support, community stories, gifts and messages of love." />
-      <Section eyebrow="Support" title="Photo areas for kindness stories">
-        <div className="grid gap-5 md:grid-cols-3">
-          <ImagePlaceholder label="Gifts" path="public/acts-of-kindness/gifts/" />
-          <ImagePlaceholder label="Families" path="public/acts-of-kindness/families/" />
-          <ImagePlaceholder label="Support" path="public/acts-of-kindness/support/" />
-        </div>
-      </Section>
-    </>
-  );
-}
+import { PageHero } from '@/components/PageHero';
+export default function Acts(){return <main><PageHero title="Acts of Kindness" copy="Small acts can carry a big legacy. This area will share community stories, gifts, support and kindness projects."/><section className="section"><div className="container grid"><div className="card"><h2>Family support</h2><p className="section-copy">Helping families feel seen, supported and remembered.</p></div><div className="card"><h2>Community giving</h2><p className="section-copy">Projects that bring care and support into local communities.</p></div><div className="card"><h2>Legacy moments</h2><p className="section-copy">Kindness done in Claudyo's name.</p></div></div></section></main>}

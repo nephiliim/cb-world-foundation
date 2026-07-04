@@ -1,8 +1,5 @@
 node_modules
 .next
-out
 .env.local
-.env*.local
-.DS_Store
 .vercel
-npm-debug.log*
+.DS_Store

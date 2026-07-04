@@ -1,14 +1,2 @@
-import ContactForm from '@/components/ContactForm';
-import PageHero from '@/components/PageHero';
-import Section from '@/components/Section';
-
-export default function ContactPage() {
-  return (
-    <>
-      <PageHero eyebrow="Contact" title="Speak to CB's World Foundation" body="Use the form for general contact, schools, media, volunteering or support requests." />
-      <Section eyebrow="Enquiry form" title="Send a message">
-        <ContactForm />
-      </Section>
-    </>
-  );
-}
+import { PageHero } from '@/components/PageHero';
+export default function Contact(){return <main><PageHero title="Contact" copy="Get in touch about schools, media, volunteering, donations, partnerships or support."/><section className="section"><div className="container"><form className="card"><input className="input" placeholder="Your name"/><input className="input" placeholder="Email address"/><select><option>General contact</option><option>Schools</option><option>Media</option><option>Volunteer</option></select><textarea className="textarea" placeholder="Message"/><button className="button" type="button">Send message</button></form></div></section></main>}

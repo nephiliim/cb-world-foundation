@@ -1,2 +1,18 @@
-import { PageHero } from '@/components/PageHero';import { galleryImages } from '@/data/site';
-export default function Gallery(){return <main><PageHero title="Gallery" copy="A growing media library for legacy images, community events, foundation work and memorial moments."/><section className="section"><div className="container grid gallery-grid">{galleryImages.map(img=><article className="card" key={img.src}><img src={img.src} alt={img.title}/><span className="eyebrow">{img.category}</span><h3>{img.title}</h3></article>)}</div></section></main>}
+import { PageHero } from "@/components/PageHero";
+import { Section } from "@/components/Section";
+import { galleryImages } from "@/data/site";
+
+export const metadata = { title: "Gallery" };
+
+export default function GalleryPage() {
+  return (
+    <>
+      <PageHero eyebrow="Photos" title="Gallery" copy="A growing visual archive for Claudyo's legacy, the foundation, family, community and events." />
+      <Section>
+        <div className="container gallery-grid">
+          {galleryImages.map((image) => <img key={image.src} src={image.src} alt={image.alt} />)}
+        </div>
+      </Section>
+    </>
+  );
+}

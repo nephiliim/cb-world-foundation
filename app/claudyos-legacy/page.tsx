@@ -1,2 +1,30 @@
-import { PageHero } from '@/components/PageHero';
-export default function Legacy(){return <main><PageHero title="Claudyo's Legacy" copy="The heart of the foundation: remembering Claudyo and carrying his name forward through love, purpose and community action."/><section className="section white"><div className="container split"><div><span className="eyebrow">Forever CB</span><h2 className="section-title">Keeping his name alive.</h2><p className="section-copy">This page is dedicated to Claudyo Jauad Lafayette — his life, his memories, his family, and the legacy that continues through CB's World Foundation.</p><p className="section-copy">As the site grows, this page can include a full timeline, family memories, music, modelling, videos and community tributes.</p></div><img src="/hero/cb-main-portrait.jpg" alt="Claudyo portrait"/></div></section><section className="section blue"><div className="container"><h2 className="section-title">Tribute videos</h2><div className="grid"><video className="video" controls src="/videos/foundation-video-1.mp4"/><video className="video" controls src="/videos/foundation-video-2.mp4"/></div></div></section></main>}
+import { PageHero } from "@/components/PageHero";
+import { Section } from "@/components/Section";
+
+export const metadata = { title: "Claudyo's Legacy" };
+
+export default function LegacyPage() {
+  return (
+    <>
+      <PageHero eyebrow="His story" title="Claudyo's Legacy" copy="A page dedicated to Claudyo Jauad Lafayette, his life, his family, his dreams and the legacy that continues through CB's World Foundation." />
+      <Section>
+        <div className="container content-grid">
+          <img className="rounded-media" src="/images/hero/claudyo-main.jpg" alt="Claudyo portrait" />
+          <div>
+            <span className="eyebrow">Legacy-led</span>
+            <h2>A life remembered through action.</h2>
+            <p className="large-copy">This foundation exists so Claudyo's name continues to stand for love, hope, support and change. The story is personal, but the mission reaches the whole community.</p>
+          </div>
+        </div>
+      </Section>
+      <Section className="soft-section">
+        <div className="container gallery-grid">
+          <img src="/images/legacy/legacy-1.jpg" alt="Legacy artwork" />
+          <img src="/images/legacy/legacy-2.jpg" alt="Legacy artwork" />
+          <img src="/images/legacy/legacy-3.jpg" alt="Legacy artwork" />
+          <img src="/images/founders/founders-1.jpg" alt="Foundation family" />
+        </div>
+      </Section>
+    </>
+  );
+}

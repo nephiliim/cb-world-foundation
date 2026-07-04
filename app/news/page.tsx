@@ -1,25 +1,18 @@
-import type { Metadata } from "next";
-import { newsPosts } from "@/data/site";
+import { PageHero } from "@/components/PageHero";
+import { Section } from "@/components/Section";
 
-export const metadata: Metadata = { title: "News" };
+export const metadata = { title: "News" };
 
-export default function NewsPage() {
+export default function Page() {
   return (
-    <section className="page-hero">
-      <div className="container">
-        <span className="eyebrow">News</span>
-        <h1 className="section-title">Updates from CB's World Foundation.</h1>
-        <p className="section-copy">Use this section for launch updates, community stories, event recaps, and volunteer callouts.</p>
-        <div className="grid news-grid">
-          {newsPosts.map((post) => (
-            <article className="card" key={post.slug}>
-              <span className="eyebrow">{new Date(post.date).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" })}</span>
-              <h2>{post.title}</h2>
-              <p className="section-copy">{post.excerpt}</p>
-            </article>
-          ))}
+    <>
+      <PageHero eyebrow="Coming next" title="News" copy="This page is part of the clean v2 structure and is ready for the next content sprint." />
+      <Section>
+        <div className="container narrow">
+          <h2>Ready to build.</h2>
+          <p className="large-copy">This page has been included so the navigation and route structure are clean from day one.</p>
         </div>
-      </div>
-    </section>
+      </Section>
+    </>
   );
 }

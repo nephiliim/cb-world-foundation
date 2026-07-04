@@ -1,6 +1,18 @@
-import PageHero from '@/components/PageHero';
-import Section from '@/components/Section';
+import { PageHero } from "@/components/PageHero";
+import { Section } from "@/components/Section";
 
-export default function BlogPage() {
-  return <><PageHero eyebrow="Blog" title="Updates and articles" body="A placeholder for foundation news, education posts and campaign updates." /><Section eyebrow="Coming soon" title="Blog manager will be added later"><div className="rounded-3xl bg-skysoft p-8 text-muted">CMS-powered blog posts will be added in a later milestone.</div></Section></>;
+export const metadata = { title: "Blog" };
+
+export default function Page() {
+  return (
+    <>
+      <PageHero eyebrow="Coming next" title="Blog" copy="This page is part of the clean v2 structure and is ready for the next content sprint." />
+      <Section>
+        <div className="container narrow">
+          <h2>Ready to build.</h2>
+          <p className="large-copy">This page has been included so the navigation and route structure are clean from day one.</p>
+        </div>
+      </Section>
+    </>
+  );
 }

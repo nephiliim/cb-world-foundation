@@ -1,6 +1,18 @@
-import PageHero from '@/components/PageHero';
-import Section from '@/components/Section';
+import { PageHero } from "@/components/PageHero";
+import { Section } from "@/components/Section";
 
-export default function ShopPage() {
-  return <><PageHero eyebrow="Shop" title="Merchandise placeholder" body="Prepared for future hoodies, t-shirts, caps and wristbands." /><Section eyebrow="Coming soon" title="Shop folders are ready"><div className="rounded-3xl bg-skysoft p-8 text-muted">Product pages, stock and checkout will be added in a future milestone.</div></Section></>;
+export const metadata = { title: "Shop" };
+
+export default function Page() {
+  return (
+    <>
+      <PageHero eyebrow="Coming next" title="Shop" copy="This page is part of the clean v2 structure and is ready for the next content sprint." />
+      <Section>
+        <div className="container narrow">
+          <h2>Ready to build.</h2>
+          <p className="large-copy">This page has been included so the navigation and route structure are clean from day one.</p>
+        </div>
+      </Section>
+    </>
+  );
 }

@@ -1,52 +1,86 @@
-export const donationLink = 'https://gofund.me/97c17c72b';
-
 export const siteConfig = {
   name: "CB's World Foundation",
   tagline: "Keeping Claudyo's Legacy Alive",
-  description: "A legacy-led foundation tackling knife crime, supporting families, and creating safer communities through education, awareness and acts of kindness.",
-  url: "https://cb-world-foundation-eight.vercel.app",
-  donationLink
+  description:
+    "A legacy-led foundation tackling knife crime, supporting families, and creating hope through community action.",
+  donationLink: "https://gofund.me/97c17c72b",
 };
 
 export const navItems = [
-  { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
-  { label: "Claudyo's Legacy", href: '/claudyos-legacy' },
-  { label: 'Foundation', href: '/foundation' },
-  { label: 'Acts of Kindness', href: '/acts-of-kindness' },
-  { label: 'Gallery', href: '/gallery' },
-  { label: 'Media', href: '/media' },
-  { label: 'Donate', href: '/donate' },
-  { label: 'Contact', href: '/contact' }
+  { label: "Home", href: "/" },
+  { label: "Legacy", href: "/claudyos-legacy" },
+  { label: "Foundation", href: "/foundation" },
+  { label: "Acts of Kindness", href: "/acts-of-kindness" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "Media", href: "/media" },
+  { label: "Donate", href: "/donate" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const impactStats = [
-  { value: '4', label: 'Core focus areas' },
-  { value: '8', label: 'Gallery categories' },
-  { value: '1', label: 'Legacy-led mission' },
-  { value: '100%', label: 'Community focused' }
+  { value: "4", label: "Core focus areas" },
+  { value: "8", label: "Media assets added" },
+  { value: "1", label: "Legacy-led mission" },
+  { value: "100%", label: "Community focused" },
 ];
 
-export const programmes = [
-  { slug: 'knife-crime-prevention', title: 'Knife crime prevention', summary: 'Education-led conversations with young people, families and communities.', icon: '🕊️', image: '/hero/cb-forever-blue.jpg', outcomes: ['Raise awareness', 'Challenge choices', 'Create safer spaces'] },
-  { slug: 'school-talks', title: 'School talks', summary: 'Honest, age-appropriate sessions that open conversations and encourage better choices.', icon: '🎓', image: '/hero/cb-forever-purple.jpg', outcomes: ['Educate young people', 'Support teachers', 'Start conversations'] },
-  { slug: 'bleed-control-kits', title: 'Bleed control kits', summary: 'Advocacy and awareness around life-saving emergency equipment.', icon: '❤️', image: '/hero/cb-forever-gold.jpg', outcomes: ['Promote emergency readiness', 'Support safer venues', 'Save lives'] },
-  { slug: 'bereavement-support', title: 'Bereavement support', summary: 'Support for families navigating grief after traumatic loss.', icon: '💙', image: '/founders/founders-1.jpg', outcomes: ['Support families', 'Share resources', 'Offer compassion'] }
+export const foundationWork = [
+  {
+    slug: "knife-crime-prevention",
+    title: "Knife crime prevention",
+    description:
+      "Education-led conversations with young people, schools, families and communities.",
+    icon: "🕊️",
+  },
+  {
+    slug: "school-talks",
+    title: "School talks",
+    description:
+      "Honest, age-appropriate sessions that challenge choices and stereotypes.",
+    icon: "🎓",
+  },
+  {
+    slug: "bleed-control-kits",
+    title: "Bleed control kits",
+    description:
+      "Advocacy and awareness around life-saving emergency equipment in public spaces.",
+    icon: "❤️",
+  },
+  {
+    slug: "bereavement-support",
+    title: "Bereavement support",
+    description:
+      "Compassionate support for families navigating grief after traumatic loss.",
+    icon: "💙",
+  },
 ];
-
-export const programs = programmes.map((p) => ({ ...p, description: p.summary }));
 
 export const galleryImages = [
-  { src: '/hero/cb-main-portrait.jpg', title: 'Claudyo portrait', category: 'Legacy' },
-  { src: '/hero/cb-forever-gold.jpg', title: 'Forever CB gold', category: 'Memorial' },
-  { src: '/hero/cb-forever-purple.jpg', title: 'Forever CB purple', category: 'Memorial' },
-  { src: '/hero/cb-forever-blue.jpg', title: 'Forever CB blue', category: 'Memorial' },
-  { src: '/logo/foundation-logo.jpg', title: 'Foundation logo', category: 'Branding' },
-  { src: '/founders/founders-1.jpg', title: 'Foundation family', category: 'Foundation' },
-  { src: '/founders/founders-2.jpg', title: 'Foundation support', category: 'Foundation' },
-  { src: '/founders/founders-3.jpg', title: 'Community foundation', category: 'Foundation' }
+  { src: "/images/hero/claudyo-main.jpg", alt: "Claudyo portrait", category: "Legacy" },
+  { src: "/images/logo/cb-world-logo.jpg", alt: "CB World Foundation logo", category: "Branding" },
+  { src: "/images/legacy/legacy-1.jpg", alt: "Legacy artwork one", category: "Legacy" },
+  { src: "/images/legacy/legacy-2.jpg", alt: "Legacy artwork two", category: "Legacy" },
+  { src: "/images/legacy/legacy-3.jpg", alt: "Legacy artwork three", category: "Legacy" },
+  { src: "/images/founders/founders-1.jpg", alt: "Foundation founders", category: "Foundation" },
+  { src: "/images/founders/founders-2.jpg", alt: "Foundation support", category: "Foundation" },
+  { src: "/images/gallery/gallery-1.jpg", alt: "Community gallery image", category: "Community" },
 ];
 
 export const newsPosts = [
-  { slug: 'building-cbs-world-foundation', title: "Building CB's World Foundation online", date: '2026-07-04', excerpt: "The foundation website is being developed as a home for Claudyo's legacy, community work, media, donations and future events.", summary: "The foundation website is being developed as a home for Claudyo's legacy, community work, media, donations and future events.", image: '/hero/cb-main-portrait.jpg' }
+  {
+    slug: "foundation-v2-launch",
+    title: "CB's World Foundation v2 launches",
+    date: "2026-07-04",
+    excerpt:
+      "A cleaner, stronger digital home for Claudyo's legacy, foundation work, media and community support.",
+  },
+  {
+    slug: "building-the-platform",
+    title: "Building a platform for community impact",
+    date: "2026-07-04",
+    excerpt:
+      "The website is being shaped into a home for stories, donations, media, events and future admin tools.",
+  },
 ];
+
+export const contactTypes = ["General contact", "Schools", "Media", "Volunteer", "Support request"];

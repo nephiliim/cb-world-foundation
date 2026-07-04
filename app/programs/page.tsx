@@ -1,23 +1,18 @@
-import type { Metadata } from "next";
-import { CTA } from "@/components/CTA";
-import { ProgramCards } from "@/components/ProgramCards";
+import { PageHero } from "@/components/PageHero";
+import { Section } from "@/components/Section";
 
-export const metadata: Metadata = { title: "Programs" };
+export const metadata = { title: "Programs" };
 
-export default function ProgramsPage() {
+export default function Page() {
   return (
     <>
-      <section className="page-hero">
-        <div className="container">
-          <span className="eyebrow">Programs</span>
-          <h1 className="section-title">Support streams ready to develop into real services.</h1>
-          <p className="section-copy">
-            These cards are editable from the site data file, making it easy to add new sessions, workshops, and outreach programmes later.
-          </p>
+      <PageHero eyebrow="Coming next" title="Programs" copy="This page is part of the clean v2 structure and is ready for the next content sprint." />
+      <Section>
+        <div className="container narrow">
+          <h2>Ready to build.</h2>
+          <p className="large-copy">This page has been included so the navigation and route structure are clean from day one.</p>
         </div>
-      </section>
-      <section className="section"><div className="container"><ProgramCards /></div></section>
-      <CTA />
+      </Section>
     </>
   );
 }

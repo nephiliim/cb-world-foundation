@@ -1,12 +1,17 @@
-import PageHero from '@/components/PageHero';
-import Section from '@/components/Section';
+import { PageHero } from "@/components/PageHero";
+import { Section } from "@/components/Section";
 
-export default function FeedbackPage() {
+export const metadata = { title: "Feedback" };
+
+export default function Page() {
   return (
     <>
-      <PageHero eyebrow="Feedback" title="Leave a message, memory or suggestion" body="This page is prepared for a future community wall with admin approval for memories, support messages and suggestions." />
-      <Section eyebrow="Coming next" title="Community wall placeholder">
-        <div className="rounded-3xl bg-skysoft p-8 text-muted">Milestone 4 will add memory submissions, approval workflow and a public wall.</div>
+      <PageHero eyebrow="Coming next" title="Feedback" copy="This page is part of the clean v2 structure and is ready for the next content sprint." />
+      <Section>
+        <div className="container narrow">
+          <h2>Ready to build.</h2>
+          <p className="large-copy">This page has been included so the navigation and route structure are clean from day one.</p>
+        </div>
       </Section>
     </>
   );

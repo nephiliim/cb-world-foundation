@@ -1,39 +1,32 @@
-# CB's World Foundation v2 Clean Rebuild
+# CB's World Foundation v2 Fresh Rebuild
 
-Clean Next.js codebase using the real uploaded foundation media.
+Clean Next.js codebase using standard CSS, no Tailwind dependency, and the uploaded media organised into `public/`.
 
 ## Run locally
 
 ```bash
 npm install
-npm run dev
-```
-
-## Build
-
-```bash
 npm run build
+npm run dev
 ```
 
 ## Pages
 
 - Home
-- About
 - Claudyo's Legacy
-- Foundation Work
+- Foundation
 - Acts of Kindness
 - Gallery
 - Media
 - Donate
 - Contact
-
-## Editable data
-
-Most content lives in `data/site.ts`.
+- Blog / Shop / Feedback placeholders
 
 ## Media folders
 
-- `public/hero`
-- `public/logo`
-- `public/founders`
+- `public/images/hero`
+- `public/images/logo`
+- `public/images/legacy`
+- `public/images/founders`
+- `public/images/gallery`
 - `public/videos`

@@ -1,1 +1,17 @@
-export function PageHero({title,copy}:{title:string;copy:string}){return <section className="page-hero"><div className="container"><span className="eyebrow">CB's World Foundation</span><h1 className="section-title">{title}</h1><p className="section-copy">{copy}</p></div></section>}
+type PageHeroProps = {
+  eyebrow?: string;
+  title: string;
+  copy: string;
+};
+
+export function PageHero({ eyebrow, title, copy }: PageHeroProps) {
+  return (
+    <section className="page-hero">
+      <div className="container narrow">
+        {eyebrow ? <span className="eyebrow">{eyebrow}</span> : null}
+        <h1>{title}</h1>
+        <p>{copy}</p>
+      </div>
+    </section>
+  );
+}

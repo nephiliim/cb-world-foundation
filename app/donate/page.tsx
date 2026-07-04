@@ -1,2 +1,25 @@
-import { PageHero } from '@/components/PageHero';import { donationLink } from '@/data/site';
-export default function Donate(){return <main><PageHero title="Donate" copy="Support CB's World Foundation and help turn Claudyo's legacy into positive action."/><section className="section"><div className="container grid">{['£5 can support awareness materials','£20 can help community outreach','£50 can support events and family help'].map(x=><div className="card" key={x}><h2>{x}</h2><p className="section-copy">Every donation helps the foundation grow its work.</p></div>)}</div><div className="container" style={{marginTop:30}}><a className="button" href={donationLink} target="_blank">Donate through GoFundMe</a></div></section></main>}
+import { PageHero } from "@/components/PageHero";
+import { Section } from "@/components/Section";
+import { ButtonLink } from "@/components/ButtonLink";
+import { siteConfig } from "@/data/site";
+
+export const metadata = { title: "Donate" };
+
+export default function DonatePage() {
+  return (
+    <>
+      <PageHero eyebrow="Support the mission" title="Donate" copy="Every donation helps the foundation continue Claudyo's legacy through awareness, support and community action." />
+      <Section>
+        <div className="container card-grid">
+          {["£5", "£20", "£50", "Monthly"].map((amount) => (
+            <article className="card" key={amount}>
+              <h3>{amount}</h3>
+              <p>Help support awareness work, family support, events and future community projects.</p>
+              <ButtonLink href={siteConfig.donationLink}>Donate</ButtonLink>
+            </article>
+          ))}
+        </div>
+      </Section>
+    </>
+  );
+}

@@ -1,2 +1,24 @@
-import { PageHero } from '@/components/PageHero';import { programmes } from '@/data/site';
-export default function Foundation(){return <main><PageHero title="Foundation Work" copy="Our programmes focus on awareness, youth support, bereavement support, safer communities and practical acts of kindness."/><section className="section"><div className="container grid">{programmes.map(p=><article className="card" id={p.slug} key={p.slug}><img src={p.image} alt=""/><h2>{p.icon} {p.title}</h2><p className="section-copy">{p.summary}</p><ul>{p.outcomes.map(o=><li key={o}>{o}</li>)}</ul></article>)}</div></section></main>}
+import { PageHero } from "@/components/PageHero";
+import { Section } from "@/components/Section";
+import { foundationWork } from "@/data/site";
+
+export const metadata = { title: "Foundation Work" };
+
+export default function FoundationPage() {
+  return (
+    <>
+      <PageHero eyebrow="Foundation work" title="Community action with purpose" copy="CB's World Foundation focuses on awareness, education, safer communities and family support." />
+      <Section>
+        <div className="container card-grid">
+          {foundationWork.map((item) => (
+            <article className="card" id={item.slug} key={item.slug}>
+              <span className="card-icon">{item.icon}</span>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </article>
+          ))}
+        </div>
+      </Section>
+    </>
+  );
+}

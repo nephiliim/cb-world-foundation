@@ -1,2 +1,16 @@
-import { donationLink } from '@/data/site';
-export function Footer(){return <footer className="footer"><div className="container footer-grid"><div><h2>CB's World Foundation</h2><p>Keeping Claudyo's legacy alive through community work, awareness and acts of kindness.</p></div><div><a className="button" href={donationLink} target="_blank">Support the foundation</a></div></div></footer>}
+import Link from "next/link";
+import { navItems, siteConfig } from "@/data/site";
+
+export function Footer() {
+  return (
+    <footer className="site-footer">
+      <div>
+        <h2>{siteConfig.name}</h2>
+        <p>{siteConfig.description}</p>
+      </div>
+      <div className="footer-links">
+        {navItems.map((item) => <Link key={item.href} href={item.href}>{item.label}</Link>)}
+      </div>
+    </footer>
+  );
+}

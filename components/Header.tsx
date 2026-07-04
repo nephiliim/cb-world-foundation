@@ -1,3 +1,19 @@
-import Link from 'next/link';
-import { navItems, donationLink } from '@/data/site';
-export function Header(){return <header className="header"><div className="container nav"><Link className="brand" href="/"><img src="/logo/foundation-logo.jpg" alt="CB's World Foundation logo"/><span>CB's World Foundation</span></Link><nav className="links">{navItems.map(i=><Link key={i.href} href={i.href}>{i.label}</Link>)}<a className="button" href={donationLink} target="_blank">Donate</a></nav></div></header>}
+import Link from "next/link";
+import { navItems, siteConfig } from "@/data/site";
+
+export function Header() {
+  return (
+    <header className="site-header">
+      <Link href="/" className="brand">
+        <img src="/images/logo/cb-world-logo.jpg" alt="CB's World Foundation logo" />
+        <span>{siteConfig.name}</span>
+      </Link>
+      <nav className="desktop-nav">
+        {navItems.map((item) => (
+          <Link key={item.href} href={item.href}>{item.label}</Link>
+        ))}
+      </nav>
+      <Link href="/donate" className="nav-donate">Donate</Link>
+    </header>
+  );
+}

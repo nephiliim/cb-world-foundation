@@ -83,20 +83,11 @@ export const programs = foundationWork.map((item) => ({
     'Support families',
     'Create safer communities'
   ]
-}));
+})
+);
 
 
 export const newsPosts = [
-  {
-    slug: "cb-world-foundation-launches-online",
-    title: "CB's World Foundation launches online",
-    date: "2026-07-04",
-    excerpt:
-      "The first version of the CB's World Foundation website is now live, sharing Claudyo's legacy and the foundation's mission.",
-    summary:
-      "The first version of the CB's World Foundation website is now live, sharing Claudyo's legacy and the foundation's mission.",
-    image: "/hero/cb-main-portrait.jpg",
-  },
   {
     slug: "building-a-platform-for-community-impact",
     title: "Building a platform for community impact",
@@ -107,6 +98,8 @@ export const newsPosts = [
       "The foundation website is being developed into a home for stories, events, donations, media and community support.",
     image: "/hero/cb-forever-blue.jpg",
   },
+];
+
 export const siteConfig = {
   name: "CB's World Foundation",
   description:

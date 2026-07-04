@@ -107,4 +107,15 @@ export const siteConfig = {
     "Keeping Claudyo's legacy alive through community support, awareness and acts of kindness.",
   url: "https://cb-world-foundation-eight.vercel.app",
   donationLink,
-};
+export const impactStats = [
+  { value: "4", label: "Core focus areas" },
+  { value: "8", label: "Gallery categories" },
+  { value: "1", label: "Legacy-led mission" },
+  { value: "100%", label: "Community focused" }
+];
+export const impactStats = [
+  { value: "4", label: "Core focus areas" },
+  { value: "8", label: "Gallery categories" },
+  { value: "1", label: "Legacy-led mission" },
+  { value: "100%", label: "Community focused" }
+];

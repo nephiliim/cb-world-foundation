@@ -77,7 +77,12 @@ export const programs = foundationWork.map((item) => ({
   summary: item.description,
   description: item.description,
   image: '/hero/cb-forever-blue.jpg',
-  icon: '💙'
+  icon: '💙',
+  outcomes: [
+    'Raise awareness',
+    'Support families',
+    'Create safer communities'
+  ]
 }));
 
 

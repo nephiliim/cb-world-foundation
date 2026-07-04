@@ -76,7 +76,8 @@ export const programs = foundationWork.map((item) => ({
   title: item.title,
   summary: item.description,
   description: item.description,
-  image: '/hero/cb-forever-blue.jpg'
+  image: '/hero/cb-forever-blue.jpg',
+  icon: '💙'
 }));
 
 

@@ -1,38 +1,27 @@
-import type { Metadata } from "next";
-import { CTA } from "@/components/CTA";
-import { values } from "@/data/site";
-
-export const metadata: Metadata = { title: "About" };
+import CardGrid from '@/components/CardGrid';
+import ImagePlaceholder from '@/components/ImagePlaceholder';
+import PageHero from '@/components/PageHero';
+import Section from '@/components/Section';
 
 export default function AboutPage() {
   return (
     <>
-      <section className="page-hero">
-        <div className="container">
-          <span className="eyebrow">About us</span>
-          <h1 className="section-title">A foundation built around community, care, and consistency.</h1>
-          <p className="section-copy">
-            CB's World Foundation exists to create safe spaces, practical support, and positive routes forward for young people and families.
-          </p>
+      <PageHero eyebrow="About" title="A family-led foundation created with purpose" body="CB's World Foundation Charity honours Claudyo by supporting families, educating young people and helping communities respond to knife crime with compassion and action." />
+      <Section eyebrow="Founders" title="Meet the people behind the foundation">
+        <div className="grid gap-6 md:grid-cols-3">
+          <ImagePlaceholder label="Dydo founder photo" path="public/founders/dydo.jpg" />
+          <ImagePlaceholder label="Siobhan founder photo" path="public/founders/siobhan.jpg" />
+          <ImagePlaceholder label="Founders together" path="public/founders/founders-together.jpg" />
         </div>
-      </section>
-      <section className="section">
-        <div className="container grid" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))" }}>
-          <div className="card">
-            <h2>Our mission</h2>
-            <p className="section-copy">
-              To support young people with mentoring, events, workshops, and access to opportunities that help them feel capable and valued.
-            </p>
-          </div>
-          <div className="card">
-            <h2>Our values</h2>
-            <ul className="list">
-              {values.map((value) => <li key={value}>{value}</li>)}
-            </ul>
-          </div>
-        </div>
-      </section>
-      <CTA />
+      </Section>
+      <Section eyebrow="Values" title="The values shaping every part of the work">
+        <CardGrid items={[
+          { title: 'Love', description: 'Leading with family, care and dignity.' },
+          { title: 'Education', description: 'Helping young people understand choices and consequences.' },
+          { title: 'Support', description: 'Standing with grieving families and vulnerable communities.' },
+          { title: 'Action', description: 'Turning awareness into practical steps and safer spaces.' }
+        ]} />
+      </Section>
     </>
   );
 }

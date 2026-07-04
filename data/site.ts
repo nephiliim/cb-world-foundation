@@ -1,93 +1,73 @@
-export const siteConfig = {
-  name: "CB's World Foundation",
-  shortName: "CB World",
-  tagline: "Helping young people feel seen, supported, and ready for the future.",
-  description:
-    "CB's World Foundation is a community-first charity website focused on youth support, mentoring, events, and positive opportunities.",
-  email: "hello@cbsworldfoundation.org",
-  phone: "+44 0000 000000",
-  location: "Coventry, United Kingdom",
-  socials: {
-    instagram: "#",
-    facebook: "#",
-    linkedin: "#"
-  }
-};
+export const donationLink = 'https://gofund.me/97c17c72b';
 
-export const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/programs", label: "Programs" },
-  { href: "/news", label: "News" },
-  { href: "/gallery", label: "Gallery" },
-  { href: "/donate", label: "Donate" },
-  { href: "/contact", label: "Contact" }
+export const navItems = [
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
+  { label: "Claudyo's Legacy", href: '/claudyos-legacy' },
+  { label: 'Foundation', href: '/foundation' },
+  { label: 'Acts of Kindness', href: '/acts-of-kindness' },
+  { label: 'Gallery', href: '/gallery' },
+  { label: 'Media', href: '/media' },
+  { label: 'Donate', href: '/donate' },
+  { label: 'Contact', href: '/contact' }
 ];
 
-export const impactStats = [
-  { value: "250+", label: "young people supported" },
-  { value: "40+", label: "community sessions" },
-  { value: "15+", label: "local partners" },
-  { value: "100%", label: "community focused" }
+export const coreMessages = [
+  'Tackling knife crime through education and awareness.',
+  'Supporting bereaved families with compassion and practical help.',
+  'Honouring Claudyo Jauad Lafayette through legacy-led community work.',
+  'Promoting bleed control kits and safer community spaces.'
 ];
 
-export const programs = [
+export const foundationWork = [
   {
-    slug: "youth-mentoring",
-    title: "Youth mentoring",
-    summary: "Guided support for young people who need confidence, direction, and consistency.",
-    description:
-      "Regular mentoring sessions that help young people build confidence, set goals, and stay consistent.",
-    icon: "🤝",
-    outcomes: ["Confidence building", "Goal setting", "Positive role models", "Accountability check-ins"]
+    title: 'Knife crime prevention',
+    description: 'Education-led conversations with young people, families and communities.'
   },
   {
-    slug: "community-events",
-    title: "Community events",
-    summary: "Safe events that bring families, volunteers, and local organisations together.",
-    description:
-      "Safe events that bring families, volunteers, and local organisations together around positive change.",
-    icon: "🎉",
-    outcomes: ["Family engagement", "Community connection", "Positive activities", "Volunteer involvement"]
+    title: 'School talks',
+    description: 'Honest, age-appropriate sessions that challenge choices and stereotypes.'
   },
   {
-    slug: "skills-workshops",
-    title: "Skills and workshops",
-    summary: "Practical sessions for creativity, wellbeing, employability, and digital confidence.",
-    description:
-      "Practical workshops covering life skills, creativity, wellbeing, employability, and digital confidence.",
-    icon: "🧠",
-    outcomes: ["Life skills", "Digital confidence", "Creative expression", "Employability support"]
+    title: 'Bleed control kits',
+    description: 'Advocacy and awareness around life-saving emergency equipment.'
+  },
+  {
+    title: 'Bereavement support',
+    description: 'Support for families navigating grief after traumatic loss.'
   }
 ];
 
-export const values = [
-  "Community before everything",
-  "Support without judgement",
-  "Opportunities that feel real",
-  "Confidence through consistency"
-];
+export const galleryCategories = ['Claudyo', 'Family', 'Foundation', 'Community', 'Events', 'Memorial', 'Acts of Kindness', 'Media'];
 
-export const newsPosts = [
-  {
-    slug: "foundation-launch-plan",
-    title: "Building the first CB's World Foundation website",
-    date: "2026-07-04",
-    excerpt:
-      "The new website gives the foundation a public home for programmes, updates, volunteering, donations, and future community stories."
-  },
-  {
-    slug: "volunteer-callout",
-    title: "Volunteer interest list now ready",
-    date: "2026-07-04",
-    excerpt:
-      "Milestone 2 adds a proper contact flow so volunteers, sponsors, and community partners can register their interest."
-  }
-];
+export const contactTypes = ['General contact', 'Schools', 'Media', 'Volunteer', 'Support request'];
 
-export const donationOptions = [
-  { amount: "£10", text: "Supports session materials" },
-  { amount: "£25", text: "Helps run a workshop" },
-  { amount: "£50", text: "Supports outreach activity" },
-  { amount: "Custom", text: "Sponsor a future project" }
+export const assetFolders = [
+  'public/logo',
+  'public/hero',
+  'public/founders',
+  'public/claudyo',
+  'public/claudyo/childhood',
+  'public/claudyo/family',
+  'public/claudyo/modelling',
+  'public/claudyo/music',
+  'public/gallery/foundation',
+  'public/gallery/community',
+  'public/gallery/school-talks',
+  'public/gallery/bleed-control',
+  'public/gallery/events',
+  'public/gallery/memorial',
+  'public/acts-of-kindness/gifts',
+  'public/acts-of-kindness/families',
+  'public/acts-of-kindness/support',
+  'public/media/bbc',
+  'public/media/itv',
+  'public/media/newspapers',
+  'public/videos/bbc',
+  'public/videos/itv',
+  'public/videos/foundation',
+  'public/shop/hoodies',
+  'public/shop/tshirts',
+  'public/shop/caps',
+  'public/shop/wristbands'
 ];

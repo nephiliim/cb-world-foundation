@@ -1,20 +1,17 @@
-import type { Metadata } from "next";
-
-export const metadata: Metadata = { title: "Gallery" };
+import ImagePlaceholder from '@/components/ImagePlaceholder';
+import PageHero from '@/components/PageHero';
+import Section from '@/components/Section';
+import { galleryCategories } from '@/data/site';
 
 export default function GalleryPage() {
   return (
-    <section className="page-hero">
-      <div className="container">
-        <span className="eyebrow">Gallery</span>
-        <h1 className="section-title">Photos and stories will live here.</h1>
-        <p className="section-copy">Milestone 1 includes placeholder gallery blocks ready to replace with real event photos.</p>
-        <div className="grid gallery" style={{ marginTop: 32 }}>
-          {Array.from({ length: 6 }).map((_, index) => (
-            <div className="gallery-item" key={index}>Gallery image {index + 1}</div>
-          ))}
+    <>
+      <PageHero eyebrow="Gallery" title="Photos and memories from CB's World" body="A growing visual archive covering Claudyo, family, foundation work, community events, memorials, acts of kindness and media moments." />
+      <Section eyebrow="Categories" title="Organised asset areas">
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+          {galleryCategories.map((category) => <ImagePlaceholder key={category} label={category} path={`public/gallery/${category.toLowerCase().replaceAll(' ', '-')}/`} />)}
         </div>
-      </div>
-    </section>
+      </Section>
+    </>
   );
 }

@@ -1,24 +1,26 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { useState } from "react";
-import { navLinks } from "@/data/site";
+import Link from 'next/link';
+import { useState } from 'react';
+import { navItems, donationLink } from '@/data/site';
 
-export function MobileNav() {
+export default function MobileNav() {
   const [open, setOpen] = useState(false);
-
   return (
-    <div className="mobile-nav">
-      <button className="menu-button" type="button" onClick={() => setOpen((value) => !value)} aria-expanded={open} aria-controls="mobile-menu">
-        {open ? "Close" : "Menu"}
+    <div className="lg:hidden">
+      <button onClick={() => setOpen((value) => !value)} className="focus-ring rounded-full border border-slate-200 px-4 py-2 text-sm font-bold text-navy" aria-expanded={open} aria-controls="mobile-menu">
+        {open ? 'Close' : 'Menu'}
       </button>
       {open && (
-        <div className="mobile-menu" id="mobile-menu">
-          {navLinks.map((link) => (
-            <Link key={link.href} href={link.href} onClick={() => setOpen(false)}>
-              {link.label}
-            </Link>
-          ))}
+        <div id="mobile-menu" className="absolute left-4 right-4 top-20 rounded-3xl border border-slate-100 bg-white p-4 shadow-soft">
+          <nav className="grid gap-2" aria-label="Mobile navigation">
+            {navItems.map((item) => (
+              <Link key={item.href} href={item.href} onClick={() => setOpen(false)} className="rounded-2xl px-4 py-3 text-sm font-bold text-ink hover:bg-skysoft hover:text-royal">
+                {item.label}
+              </Link>
+            ))}
+            <a href={donationLink} target="_blank" rel="noreferrer" className="mt-2 rounded-2xl bg-royal px-4 py-3 text-center text-sm font-black text-white">Donate on GoFundMe</a>
+          </nav>
         </div>
       )}
     </div>

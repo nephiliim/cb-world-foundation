@@ -1,55 +1,33 @@
-"use client";
+'use client';
 
-import { FormEvent, useState } from "react";
+import { useState } from 'react';
+import { contactTypes } from '@/data/site';
 
-type Status = "idle" | "loading" | "success" | "error";
+export default function ContactForm() {
+  const [sent, setSent] = useState(false);
 
-export function ContactForm() {
-  const [status, setStatus] = useState<Status>("idle");
-  const [message, setMessage] = useState("");
-
-  async function onSubmit(event: FormEvent<HTMLFormElement>) {
+  async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setStatus("loading");
-    setMessage("");
-
     const formData = new FormData(event.currentTarget);
-    const payload = Object.fromEntries(formData.entries());
-
-    const response = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
+    await fetch('/api/contact', {
+      method: 'POST',
+      body: JSON.stringify(Object.fromEntries(formData.entries())),
+      headers: { 'Content-Type': 'application/json' }
     });
-
-    if (!response.ok) {
-      setStatus("error");
-      setMessage("Please fill in your name, email, subject, and message.");
-      return;
-    }
-
+    setSent(true);
     event.currentTarget.reset();
-    setStatus("success");
-    setMessage("Thanks — your message has been checked and is ready for email integration in the next milestone.");
   }
 
   return (
-    <form className="card form" onSubmit={onSubmit}>
-      <input className="input" name="name" placeholder="Your name" aria-label="Your name" required />
-      <input className="input" name="email" type="email" placeholder="Email address" aria-label="Email address" required />
-      <select className="input" name="enquiryType" aria-label="Enquiry type" defaultValue="Volunteer">
-        <option>Volunteer</option>
-        <option>Donate</option>
-        <option>Partnership</option>
-        <option>General question</option>
-      </select>
-      <input className="input" name="subject" placeholder="Subject" aria-label="Subject" required />
-      <textarea className="textarea" name="message" placeholder="Message" aria-label="Message" required />
-      <button className="button button-primary" type="submit" disabled={status === "loading"}>
-        {status === "loading" ? "Sending..." : "Send message"}
-      </button>
-      {message && <small className={`form-status ${status}`}>{message}</small>}
-      <small className="section-copy">Milestone 2 validates messages. Milestone 3 can connect this to Resend, Gmail, or another email provider.</small>
+    <form onSubmit={onSubmit} className="rounded-3xl border border-slate-100 bg-white p-6 shadow-soft">
+      {sent && <div className="mb-5 rounded-2xl bg-skysoft p-4 text-sm font-bold text-navy">Thank you. Your message has been recorded for the foundation team.</div>}
+      <div className="grid gap-5 md:grid-cols-2">
+        <label className="grid gap-2 text-sm font-bold text-navy">Name<input required name="name" className="rounded-2xl border border-slate-200 px-4 py-3 font-normal text-ink" /></label>
+        <label className="grid gap-2 text-sm font-bold text-navy">Email<input required type="email" name="email" className="rounded-2xl border border-slate-200 px-4 py-3 font-normal text-ink" /></label>
+      </div>
+      <label className="mt-5 grid gap-2 text-sm font-bold text-navy">Enquiry type<select name="type" className="rounded-2xl border border-slate-200 px-4 py-3 font-normal text-ink">{contactTypes.map((type) => <option key={type}>{type}</option>)}</select></label>
+      <label className="mt-5 grid gap-2 text-sm font-bold text-navy">Message<textarea required name="message" rows={6} className="rounded-2xl border border-slate-200 px-4 py-3 font-normal text-ink" /></label>
+      <button className="focus-ring mt-6 rounded-full bg-royal px-7 py-3 text-sm font-black text-white hover:bg-navy">Send message</button>
     </form>
   );
 }

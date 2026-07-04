@@ -1,44 +1,74 @@
-# CB's World Foundation
+# CB's World Foundation Charity
 
-Milestone 2 of the CB's World Foundation website.
+Milestone 1 public website for CB's World Foundation Charity.
 
-## Built with
+Built from the handover source of truth:
 
+- Design B: white, deep blue, black, hopeful, soft and storytelling-led
 - Next.js 14
-- React 18
 - TypeScript
+- Tailwind CSS
 - App Router
-- Global CSS in `app/globals.css`
+- Mobile-first responsive layout
 
 ## Pages included
 
 - Home
 - About
-- Programs
-- Individual programme detail pages
-- News
+- Claudyo's Legacy
+- Foundation
+- Acts of Kindness
 - Gallery
+- Media & Press
 - Donate
+- Feedback
+- Blog placeholder
+- Shop placeholder
 - Contact
 
-## Milestone 2 features added
+## Features included
 
-- Mobile menu/navigation
-- Editable programme data with dynamic routes at `/programs/[slug]`
-- Contact form component
-- Contact API route at `/api/contact`
-- Donation options controlled from `data/site.ts`
-- News/update page controlled from `data/site.ts`
-- Cleaner responsive styling
+- Navbar
+- Mobile menu
+- Footer
+- Reusable page hero, section, card grid and button components
+- Contact form and `/api/contact` route
+- Full public asset folder structure
+- Handover docs copied into `/docs`
+- Donation CTA linked to GoFundMe
 
-## Getting started
+## Asset structure
+
+All real photos and videos should be added inside `public/`.
+
+Important folders:
+
+```txt
+public/logo
+public/hero
+public/founders
+public/claudyo
+public/gallery
+public/acts-of-kindness
+public/media
+public/videos
+public/shop
+```
+
+See `docs/assets.md` for detailed placement and naming rules.
+
+## Run locally
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open `http://localhost:3000` in your browser.
+Open:
+
+```txt
+http://localhost:3000
+```
 
 ## Build for production
 
@@ -47,37 +77,43 @@ npm run build
 npm start
 ```
 
-## Main editable content
+## Push to GitHub
 
-Most starter content is stored in:
-
-```txt
-data/site.ts
+```bash
+git add .
+git commit -m "Milestone 1 - CB World Foundation public website"
+git push
 ```
 
-Change the foundation name, contact details, navigation, impact stats, programme cards, donation options, news posts, and values from there.
+If this is a fresh repo:
 
-## Contact form notes
-
-The form validates and posts to:
-
-```txt
-app/api/contact/route.ts
+```bash
+git init
+git add .
+git commit -m "Milestone 1 - CB World Foundation public website"
+git branch -M main
+git remote add origin https://github.com/nephiliim/cb-world-foundation.git
+git push -u origin main
 ```
 
-For now, it logs the enquiry server-side. In the next milestone you can connect it to Resend, Gmail, SendGrid, Airtable, Notion, or a database.
+## Next milestone
 
-## Deploy to Vercel
+Milestone 2 should add the admin shell, protected login placeholders and content manager routes.
 
-1. Push this project to GitHub.
-2. Go to Vercel and import the GitHub repo.
-3. Keep the default Next.js settings.
-4. Click Deploy.
+## Milestone 2 update
 
-## Milestone 3 ideas
+Added the first real media assets and rebuilt the Claudyo's Legacy page with:
 
-- Connect contact form to real email delivery
-- Add real logo and images
-- Add a simple admin/CMS layer
-- Add Stripe/PayPal donation links
-- Add accessibility and SEO polish
+- Full hero section using Claudyo portrait and tribute artwork
+- Tribute gallery
+- Foundation videos
+- Story cards and timeline structure
+- Logo added to the header
+- Homepage updated to use real imagery
+
+Media locations:
+
+- `public/claudyo/`
+- `public/founders/`
+- `public/logo/`
+- `public/videos/`

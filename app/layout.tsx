@@ -1,18 +1,14 @@
-import type { Metadata } from "next";
-import "./globals.css";
-import { Footer } from "@/components/Footer";
-import { Header } from "@/components/Header";
-import { siteConfig } from "@/data/site";
+import type { Metadata } from 'next';
+import './globals.css';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: {
-    default: siteConfig.name,
-    template: `%s | ${siteConfig.name}`
-  },
-  description: siteConfig.description
+  title: "CB's World Foundation Charity",
+  description: "Honouring Claudyo Jauad Lafayette through knife crime prevention, community support, education and acts of kindness."
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>

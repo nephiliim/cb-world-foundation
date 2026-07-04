@@ -107,4 +107,10 @@ export const newsPosts = [
       "The foundation website is being developed into a home for stories, events, donations, media and community support.",
     image: "/hero/cb-forever-blue.jpg",
   },
-];
+export const siteConfig = {
+  name: "CB's World Foundation",
+  description:
+    "Keeping Claudyo's legacy alive through community support, awareness and acts of kindness.",
+  url: "https://cb-world-foundation-eight.vercel.app",
+  donationLink,
+};

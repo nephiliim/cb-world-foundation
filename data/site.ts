@@ -71,3 +71,27 @@ export const assetFolders = [
   'public/shop/caps',
   'public/shop/wristbands'
 ];
+export const programs = foundationWork.map((item) => ({
+  slug: item.title.toLowerCase().replaceAll(' ', '-'),
+  title: item.title,
+  summary: item.description,
+  description: item.description,
+  image: '/hero/cb-forever-blue.jpg'
+}));
+
+export const newsPosts = [
+  {
+    title: "CB's World Foundation launches online",
+    date: "2026-07-04",
+    summary:
+      "The first version of the CB's World Foundation website is now live, sharing Claudyo's legacy and the foundation's mission.",
+    image: "/hero/cb-main-portrait.jpg",
+  },
+  {
+    title: "Building a platform for community impact",
+    date: "2026-07-04",
+    summary:
+      "The foundation website is being developed into a home for stories, events, donations, media and community support.",
+    image: "/hero/cb-forever-blue.jpg",
+  },
+];

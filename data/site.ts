@@ -102,6 +102,7 @@ export const newsPosts = [
 
 export const siteConfig = {
   name: "CB's World Foundation",
+   tagline: "Keeping Claudyo's Legacy Alive.",
   description:
     "Keeping Claudyo's legacy alive through community support, awareness and acts of kindness.",
   url: "https://cb-world-foundation-eight.vercel.app",

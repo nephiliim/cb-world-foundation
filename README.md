@@ -1,32 +1,16 @@
-# CB's World Foundation v2 Fresh Rebuild
+# CB World Foundation Premium Homepage Update
 
-Clean Next.js codebase using standard CSS, no Tailwind dependency, and the uploaded media organised into `public/`.
+Replace these files in your project:
 
-## Run locally
+- app/page.tsx
+- app/globals.css
+- data/site.ts
 
-```bash
-npm install
+Then run:
+
+```cmd
 npm run build
-npm run dev
+git add .
+git commit -m "Premium homepage redesign"
+git push
 ```
-
-## Pages
-
-- Home
-- Claudyo's Legacy
-- Foundation
-- Acts of Kindness
-- Gallery
-- Media
-- Donate
-- Contact
-- Blog / Shop / Feedback placeholders
-
-## Media folders
-
-- `public/images/hero`
-- `public/images/logo`
-- `public/images/legacy`
-- `public/images/founders`
-- `public/images/gallery`
-- `public/videos`

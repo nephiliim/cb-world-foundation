@@ -1,10 +1,11 @@
 export const donationLink = "https://gofund.me/97c17c72b";
+
 export const siteConfig = {
   name: "CB's World Foundation",
   tagline: "Keeping Claudyo's Legacy Alive",
   description:
     "A legacy-led foundation tackling knife crime, supporting families, and creating hope through community action.",
-  donationLink: "https://gofund.me/97c17c72b",
+  donationLink,
 };
 
 export const navItems = [
@@ -20,7 +21,7 @@ export const navItems = [
 
 export const impactStats = [
   { value: "4", label: "Core focus areas" },
-  { value: "8", label: "Media assets added" },
+  { value: "8", label: "Real media assets" },
   { value: "1", label: "Legacy-led mission" },
   { value: "100%", label: "Community focused" },
 ];
@@ -87,15 +88,11 @@ export const newsPosts = [
 export const contactTypes = ["General contact", "Schools", "Media", "Volunteer", "Support request"];
 
 export const programs = foundationWork.map((item) => ({
-  slug: item.title.toLowerCase().replaceAll(" ", "-"),
+  slug: item.slug,
   title: item.title,
   summary: item.description,
   description: item.description,
-  image: "/hero/cb-forever-blue.jpg",
-  icon: "💙",
-  outcomes: [
-    "Raise awareness",
-    "Support families",
-    "Create safer communities"
-  ]
+  image: "/images/legacy/legacy-1.jpg",
+  icon: item.icon,
+  outcomes: ["Raise awareness", "Support families", "Create safer communities"],
 }));

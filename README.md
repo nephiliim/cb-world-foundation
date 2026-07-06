@@ -1,33 +1,34 @@
-# CB World Foundation V4 Professional Update
+# CB World Foundation - Legacy Style Homepage Update
 
-This update cleans the project structure and applies a consistent premium blue charity design.
+This update changes the homepage to the darker, cleaner charity style from the reference screenshot.
 
 ## Files included
 
-- `data/media.ts`
-- `data/navigation.ts`
-- `data/foundation.ts`
-- `data/content.ts`
-- `data/site.ts` compatibility exports
-- `app/page.tsx`
-- `app/claudyos-legacy/page.tsx`
-- `app/justice-for-claudyo/page.tsx`
-- `app/foundation/page.tsx`
-- `app/gallery/page.tsx`
-- `app/globals.css`
-- `components/Header.tsx`
-- `components/Footer.tsx`
-- `public/images/logo/cb-world-logo.png`
+- `app/page.tsx` - replacement homepage
+- `docs/homepage-legacy-style.css` - CSS to paste into `app/globals.css`
 
-## Install
+## How to apply
 
-Copy these files into your project root and replace when prompted.
-
-Then run:
+1. Copy `app/page.tsx` into your project and replace the existing file.
+2. Open `docs/homepage-legacy-style.css` and copy all CSS.
+3. Paste the CSS at the bottom of your existing `app/globals.css`.
+4. Run:
 
 ```cmd
 npm run build
 git add .
-git commit -m "Apply V4 professional site cleanup"
+git commit -m "Apply legacy style homepage"
 git push
 ```
+
+## Notes
+
+This expects your `data/site.ts` to export:
+
+- `siteConfig`
+- `heroImages`
+- `galleryImages`
+- `impactStats`
+- `missionCards`
+
+These already exist based on the latest V4 work.

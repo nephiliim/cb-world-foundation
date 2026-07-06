@@ -1,19 +1,33 @@
-# CB World Homepage V4 Real Photos Update
+# CB World Foundation V4 Professional Update
 
-Copy these folders/files into your project root and replace existing files when asked:
+This update cleans the project structure and applies a consistent premium blue charity design.
 
+## Files included
+
+- `data/media.ts`
+- `data/navigation.ts`
+- `data/foundation.ts`
+- `data/content.ts`
+- `data/site.ts` compatibility exports
 - `app/page.tsx`
+- `app/claudyos-legacy/page.tsx`
+- `app/justice-for-claudyo/page.tsx`
+- `app/foundation/page.tsx`
+- `app/gallery/page.tsx`
 - `app/globals.css`
 - `components/Header.tsx`
 - `components/Footer.tsx`
-- `data/site.ts`
-- `public/images/logo/cb-foundation-logo.jpg`
+- `public/images/logo/cb-world-logo.png`
+
+## Install
+
+Copy these files into your project root and replace when prompted.
 
 Then run:
 
 ```cmd
 npm run build
 git add .
-git commit -m "Apply V4 homepage with real photos"
+git commit -m "Apply V4 professional site cleanup"
 git push
 ```

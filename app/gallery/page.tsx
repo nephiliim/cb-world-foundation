@@ -1,27 +1,10 @@
 import { galleryImages } from "@/data/site";
 
 export default function GalleryPage() {
-  const categories = Array.from(new Set(galleryImages.map((image) => image.category)));
   return (
     <main>
-      <section className="simple-page-header">
-        <span className="eyebrow">Gallery</span>
-        <h1>Memories, memorials and foundation moments.</h1>
-        <p>A growing visual archive for Claudyo’s legacy and the work being built in his name.</p>
-      </section>
-      <section className="section">
-        <div className="filter-row">
-          {categories.map((category) => <span key={category}>{category}</span>)}
-        </div>
-        <div className="gallery-grid large">
-          {galleryImages.map((image) => (
-            <figure className="gallery-card" key={image.src}>
-              <img src={image.src} alt={image.alt} />
-              <figcaption>{image.category} — {image.alt}</figcaption>
-            </figure>
-          ))}
-        </div>
-      </section>
+      <section className="page-hero text-only"><div><span className="eyebrow">Gallery</span><h1>Photos, memories and foundation moments.</h1><p>A growing archive of Claudyo's legacy and the work being carried forward.</p></div></section>
+      <section className="section-shell"><div className="gallery-grid-full">{galleryImages.map((image) => <figure key={image.src} className="photo-card"><img src={image.src} alt={image.alt} /><figcaption><strong>{image.category}</strong><span>{image.caption}</span></figcaption></figure>)}</div></section>
     </main>
   );
 }

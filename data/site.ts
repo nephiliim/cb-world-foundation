@@ -71,3 +71,10 @@ export const newsPosts = [
     image: images.familyGrave,
   },
 ];
+export const contactTypes = [
+  "General contact",
+  "Schools",
+  "Media",
+  "Volunteer",
+  "Support request",
+];

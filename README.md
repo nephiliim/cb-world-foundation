@@ -1,17 +1,19 @@
-# CB World Foundation V6 Homepage Update
+# CB World Foundation V6 Complete Homepage
 
-Replace these files/folders in your project:
+Copy these folders/files into the root of `C:\Projects\cb-world-foundation`:
 
 - `app/page.tsx`
-- `components/home/` folder
+- `app/layout.tsx`
+- `app/v6-homepage.css`
+- `components/home/`
 
-Then paste the CSS from `v6-homepage.css` at the **bottom** of `app/globals.css`.
-
-Run:
+Then run:
 
 ```cmd
 npm run build
 git add .
-git commit -m "Apply V6 homepage rebuild"
+git commit -m "Install complete V6 homepage"
 git push
 ```
+
+Important: do not copy these files into `public/`.

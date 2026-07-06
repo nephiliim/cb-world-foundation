@@ -21,7 +21,7 @@ export default function HomePage() {
 
       <section className="v6-final-cta">
         <span className="v6-kicker">Join the mission</span>
-        <h2>Help keep Claudyo’s legacy moving forward.</h2>
+        <h2>Help keep Claudyo&apos;s legacy moving forward.</h2>
         <p>
           Share the appeal, support the foundation, leave a message, or get involved with future community work.
         </p>

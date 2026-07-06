@@ -1,23 +1,31 @@
-type Props = {
-  siteConfig: {
-    reward?: string;
-    policeAppealUrl?: string;
-    crimestoppersPhone?: string;
-  };
+import Link from "next/link";
+
+type SiteConfig = {
+  reward: string;
+  policeAppealUrl: string;
+  crimestoppersPhone: string;
 };
 
-export function V6Justice({ siteConfig }: Props) {
+export function V6Justice({ siteConfig }: { siteConfig: SiteConfig }) {
   return (
     <section className="v6-justice">
       <div>
-        <p className="v6-kicker">Justice for Claudyo</p>
-        <h2>{siteConfig.reward || "£20,000"} reward for information leading to a conviction.</h2>
-        <p>If you know anything, please say something. One share could reach the right person.</p>
+        <span className="v6-kicker">Justice for Claudyo</span>
+        <h2>{siteConfig.reward} Reward</h2>
+        <p>
+          For information leading to a conviction. If you know anything, please do the right thing.
+        </p>
+        <div className="v6-actions">
+          <a className="v6-btn v6-btn-primary" href={siteConfig.policeAppealUrl} target="_blank" rel="noreferrer">
+            Submit Information
+          </a>
+          <Link className="v6-btn v6-btn-ghost" href="/justice-for-claudyo">Learn More</Link>
+        </div>
       </div>
-      <div className="v6-justice-panel">
+      <div className="v6-crimestoppers">
         <span>Crimestoppers</span>
-        <strong>{siteConfig.crimestoppersPhone || "0800 555 111"}</strong>
-        <a className="v6-btn v6-btn-primary" href={siteConfig.policeAppealUrl || "https://mipp.police.uk/operation/01MPS23V46-PO1"} target="_blank" rel="noreferrer">Submit Information</a>
+        <strong>{siteConfig.crimestoppersPhone}</strong>
+        <p>100% anonymous. Always.</p>
       </div>
     </section>
   );

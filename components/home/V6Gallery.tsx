@@ -1,32 +1,34 @@
-type GalleryImage = { src: string; alt: string; category?: string };
-type NewsPost = { title: string; date?: string; excerpt?: string; summary?: string };
+type GalleryImage = { src: string; alt: string; category: string };
+type NewsPost = { slug: string; title: string; excerpt: string; image?: string };
 
 export function V6Gallery({ images, news }: { images: GalleryImage[]; news: NewsPost[] }) {
   return (
     <section className="v6-section">
       <div className="v6-section-head">
         <div>
-          <p className="v6-kicker">Gallery and updates</p>
-          <h2>Real moments. Real legacy.</h2>
+          <span className="v6-kicker">Latest Updates</span>
+          <h2>Real moments. Real memories.</h2>
         </div>
-        <a className="v6-text-link" href="/gallery">View all →</a>
+        <a href="/news">View all news →</a>
       </div>
-      <div className="v6-gallery-grid">
-        {images.map((image) => (
-          <figure key={image.src}>
-            <img src={image.src} alt={image.alt} />
-            <figcaption>{image.category || image.alt}</figcaption>
-          </figure>
-        ))}
-      </div>
-      <div className="v6-news-strip">
-        {news.map((item) => (
-          <article key={item.title}>
-            <span>{item.date || "Latest"}</span>
-            <h3>{item.title}</h3>
-            <p>{item.excerpt || item.summary}</p>
-          </article>
-        ))}
+      <div className="v6-gallery-news">
+        <div className="v6-gallery-grid">
+          {images.map((img) => (
+            <figure key={img.src}>
+              <img src={img.src} alt={img.alt} />
+              <figcaption>{img.category}</figcaption>
+            </figure>
+          ))}
+        </div>
+        <div className="v6-news-list">
+          {news.map((post) => (
+            <article key={post.slug}>
+              <span>News</span>
+              <h3>{post.title}</h3>
+              <p>{post.excerpt}</p>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );

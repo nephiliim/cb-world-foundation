@@ -1,30 +1,84 @@
-import { PageHero } from "@/components/PageHero";
-import { Section } from "@/components/Section";
+import Link from "next/link";
+import { CTA } from "@/components/CTA";
+import { galleryImages, heroImages } from "@/data/site";
 
-export const metadata = { title: "Claudyo's Legacy" };
+const timeline = [
+  ["2006", "Claudyo was born — a much-loved son whose life would touch so many people."],
+  ["Childhood", "Family, laughter, memories and the moments that shaped who he became."],
+  ["Growing up", "A young man remembered for his personality, confidence, creativity and love from those around him."],
+  ["Today", "His legacy continues through CB's World Foundation, community action and the call for justice."],
+];
 
 export default function LegacyPage() {
   return (
-    <>
-      <PageHero eyebrow="His story" title="Claudyo's Legacy" copy="A page dedicated to Claudyo Jauad Lafayette, his life, his family, his dreams and the legacy that continues through CB's World Foundation." />
-      <Section>
-        <div className="container content-grid">
-          <img className="rounded-media" src="/images/hero/claudyo-main.jpg" alt="Claudyo portrait" />
-          <div>
-            <span className="eyebrow">Legacy-led</span>
-            <h2>A life remembered through action.</h2>
-            <p className="large-copy">This foundation exists so Claudyo's name continues to stand for love, hope, support and change. The story is personal, but the mission reaches the whole community.</p>
+    <main>
+      <section className="page-hero legacy-hero">
+        <div>
+          <span className="eyebrow">Claudyo's Legacy</span>
+          <h1>Forever loved. Forever remembered. Forever inspiring change.</h1>
+          <p>17 years of love, memories and a legacy that continues through family, community and action.</p>
+          <div className="button-row">
+            <Link className="button primary" href="/justice-for-claudyo">Justice for Claudyo</Link>
+            <Link className="button ghost" href="/legacy-wall">Leave a Feather</Link>
           </div>
         </div>
-      </Section>
-      <Section className="soft-section">
-        <div className="container gallery-grid">
-          <img src="/images/legacy/legacy-1.jpg" alt="Legacy artwork" />
-          <img src="/images/legacy/legacy-2.jpg" alt="Legacy artwork" />
-          <img src="/images/legacy/legacy-3.jpg" alt="Legacy artwork" />
-          <img src="/images/founders/founders-1.jpg" alt="Foundation family" />
+        <img src={heroImages.claudyoPortrait} alt="Claudyo Lafayette" />
+      </section>
+
+      <section className="split-section">
+        <img className="feature-image" src={heroImages.claudyoNews} alt="Claudyo Jauad Lafayette" />
+        <div>
+          <span className="eyebrow">Who Claudyo was</span>
+          <h2>A son, a friend and a young man whose memory continues to move people.</h2>
+          <p>
+            This page is a place to remember Claudyo as a person first: loved deeply, remembered proudly and honoured through every act of kindness, every conversation and every step taken in his name.
+          </p>
         </div>
-      </Section>
-    </>
+      </section>
+
+      <section className="section dark-section">
+        <div className="section-heading">
+          <span className="eyebrow">Timeline</span>
+          <h2>A life remembered through love.</h2>
+        </div>
+        <div className="timeline">
+          {timeline.map(([year, text]) => (
+            <div className="timeline-item" key={year}>
+              <strong>{year}</strong>
+              <p>{text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="section-heading between">
+          <div>
+            <span className="eyebrow">Memories</span>
+            <h2>Photos that carry the story forward.</h2>
+          </div>
+          <Link className="text-link" href="/gallery">Open gallery →</Link>
+        </div>
+        <div className="gallery-grid">
+          {galleryImages.map((image) => (
+            <figure key={image.src} className="gallery-card">
+              <img src={image.src} alt={image.alt} />
+              <figcaption>{image.category}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
+      <section className="justice-banner">
+        <div>
+          <span className="eyebrow">Justice for Claudyo</span>
+          <h2>If you know anything, please say something.</h2>
+          <p>The appeal remains an important part of Claudyo's story. Information should go through official reporting channels.</p>
+        </div>
+        <Link className="button primary" href="/justice-for-claudyo">View Justice Appeal</Link>
+      </section>
+
+      <CTA />
+    </main>
   );
 }

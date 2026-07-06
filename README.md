@@ -1,52 +1,33 @@
-# CB's World Foundation — Legacy Wall Update
+# CB's World Foundation V4 Update
 
-## Files included
+This update applies the new premium blue visual identity across the core public website.
 
-- `app/legacy-wall/page.tsx`
-- `components/LegacyWallForm.tsx`
-- `app/api/legacy-messages/route.ts`
-- `app/admin/legacy-wall/page.tsx`
-- `supabase/legacy_wall.sql`
+## Replace/add these files
 
-## Install
+Copy this package into your project root and allow Windows to replace files:
 
-Copy the folders/files into your project root.
+- `app/page.tsx`
+- `app/globals.css`
+- `app/claudyos-legacy/page.tsx`
+- `app/justice-for-claudyo/page.tsx`
+- `app/gallery/page.tsx`
+- `app/foundation/page.tsx`
+- `app/donate/page.tsx`
+- `app/contact/page.tsx`
+- `components/Header.tsx`
+- `components/Footer.tsx`
+- `components/CTA.tsx`
+- `data/site.ts`
 
-## Supabase setup
-
-Open Supabase → SQL Editor → New query.
-
-Paste the contents of:
-
-```txt
-supabase/legacy_wall.sql
-```
-
-Run it.
-
-## Add nav link
-
-In `data/site.ts`, add this to `navItems`:
-
-```ts
-{ label: "Legacy Wall", href: "/legacy-wall" },
-```
-
-## Build and push
+## Then run
 
 ```cmd
 npm run build
 git add .
-git commit -m "Add Legacy Wall"
+git commit -m "Apply CB World Foundation V4 redesign"
 git push
 ```
 
-Visit:
+## Notes
 
-```txt
-/legacy-wall
-/admin/legacy-wall
-```
-
-Note: Admin approval buttons are planned for the next sprint. This starter shows submitted messages and displays only approved messages publicly.
-// redeploy
+This uses the real public image URLs you supplied. Longer term, download approved images and store them in Supabase Storage or the project's `public/images` folder for reliability.

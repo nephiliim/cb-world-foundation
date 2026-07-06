@@ -1,22 +1,19 @@
-import { PageHero } from "@/components/PageHero";
-import { Section } from "@/components/Section";
-import { contactTypes } from "@/data/site";
-
-export const metadata = { title: "Contact" };
-
 export default function ContactPage() {
   return (
-    <>
-      <PageHero eyebrow="Get in touch" title="Contact CB's World Foundation" copy="Use this page for schools, media, volunteering, partnership enquiries and support requests." />
-      <Section>
-        <form className="container form">
-          <input placeholder="Your name" />
-          <input placeholder="Email address" type="email" />
-          <select>{contactTypes.map((type) => <option key={type}>{type}</option>)}</select>
-          <textarea placeholder="Your message" />
-          <button className="button" type="button">Send message</button>
+    <main>
+      <section className="simple-page-header">
+        <span className="eyebrow">Contact</span>
+        <h1>Contact CB’s World Foundation.</h1>
+        <p>For schools, media, volunteering, support requests or general enquiries, please get in touch.</p>
+      </section>
+      <section className="section">
+        <form className="contact-form">
+          <label>Name<input placeholder="Your name" /></label>
+          <label>Email<input placeholder="you@example.com" /></label>
+          <label>Message<textarea placeholder="How can the foundation help?" /></label>
+          <button className="button primary" type="button">Send Message</button>
         </form>
-      </Section>
-    </>
+      </section>
+    </main>
   );
 }

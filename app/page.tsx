@@ -1,117 +1,201 @@
 import Link from "next/link";
-import { galleryImages, heroImages, impactStats, missionCards, siteConfig } from "@/data/site";
+import { galleryImages, siteConfig } from "@/data/site";
 
-const claudyoImage = heroImages?.claudyoPortrait || heroImages?.claudyo || galleryImages?.[0]?.src || "/images/hero/claudyo-main.jpg";
-const missionImage = heroImages?.familyGrave || heroImages?.family || galleryImages?.[2]?.src || claudyoImage;
+const claudyoPortrait =
+  "https://crimestoppers-uk.org/getmedia/1d8e3981-ac90-4a4b-aa47-1c3594b32ce7/Claudyo-Lafayette-photo-1.png";
+
+const newsItems = [
+  {
+    title: "Justice for Claudyo appeal continues",
+    date: "Reward appeal",
+    href: "/justice-for-claudyo",
+  },
+  {
+    title: "Legacy Wall now open for messages",
+    date: "Community tribute",
+    href: "/legacy-wall",
+  },
+  {
+    title: "Foundation work growing across the community",
+    date: "Our mission",
+    href: "/foundation",
+  },
+];
+
+const pillars = [
+  {
+    title: "Legacy",
+    text: "Keeping Claudyo’s memory alive through love, action and community.",
+    icon: "🦋",
+  },
+  {
+    title: "Justice",
+    text: "Sharing the official appeal and encouraging anyone with information to speak up.",
+    icon: "⚖️",
+  },
+  {
+    title: "Support",
+    text: "Standing with families, young people and communities affected by violence.",
+    icon: "💙",
+  },
+  {
+    title: "Change",
+    text: "Creating safer communities through awareness, education and acts of kindness.",
+    icon: "🤝",
+  },
+];
+
+const impact = [
+  ["Young lives touched", "2,543+"],
+  ["Bleed control kits", "156"],
+  ["School talks", "87"],
+  ["Communities supported", "24"],
+  ["Lives we’re building for", "Every day"],
+];
 
 export default function HomePage() {
+  const featuredImages = galleryImages.slice(0, 4);
+
   return (
-    <main className="legacy-home">
-      <section className="legacy-hero-shell">
-        <div className="legacy-hero-bg" />
-        <div className="legacy-hero-content">
-          <div className="legacy-hero-copy">
-            <span className="legacy-kicker">CB&apos;s World Foundation</span>
+    <main className="v5-home">
+      <section className="v5-hero" aria-label="CB's World Foundation homepage hero">
+        <div className="v5-hero__glow" />
+        <div className="v5-hero__content">
+          <div className="v5-hero__copy">
+            <p className="v5-kicker">CB’s World Foundation</p>
             <h1>
               Long Live
               <span>His Legacy</span>
             </h1>
-            <p>
+            <p className="v5-hero__lead">
               Honouring Claudyo Jauad Lafayette by working to prevent knife crime,
               support families affected by violence, and create safer communities.
             </p>
-            <div className="legacy-actions">
-              <a className="legacy-button primary" href={siteConfig.donationLink} target="_blank" rel="noreferrer">
-                Donate Now <span>♡</span>
-              </a>
-              <Link className="legacy-button ghost" href="/claudyos-legacy">
-                Read His Story
+            <div className="v5-actions">
+              <Link className="v5-btn v5-btn--primary" href="/donate">
+                Donate now <span>♥</span>
+              </Link>
+              <Link className="v5-btn v5-btn--ghost" href="/claudyos-legacy">
+                Read his story
               </Link>
             </div>
           </div>
 
-          <div className="legacy-hero-image-wrap" aria-label="Claudyo portrait">
-            <img src={claudyoImage} alt="Claudyo Jauad Lafayette" />
-            <div className="legacy-image-glow" />
+          <div className="v5-hero__image-wrap">
+            <div className="v5-logo-orb">
+              <img src="/images/logo/cb-world-logo.png" alt="CB's World Foundation logo" />
+            </div>
+            <img className="v5-hero__image" src={claudyoPortrait} alt="Claudyo Jauad Lafayette" />
           </div>
         </div>
 
-        <div className="legacy-stats-bar">
-          {impactStats.map((stat) => (
-            <div key={stat.label} className="legacy-stat-item">
-              <span>{stat.label}</span>
-              <strong>{stat.value}</strong>
+        <div className="v5-impact-strip" aria-label="Foundation impact highlights">
+          {impact.map(([label, value]) => (
+            <div className="v5-impact-item" key={label}>
+              <span>{label}</span>
+              <strong>{value}</strong>
             </div>
           ))}
-          <div className="legacy-stat-item final">
-            <span>Lives We&apos;re Building A Future For</span>
-            <strong>Every Day</strong>
-          </div>
         </div>
       </section>
 
-      <section className="legacy-mission-section">
-        <div className="legacy-mission-copy">
-          <span className="legacy-kicker blue">Our Mission</span>
-          <h2>Building safer communities. Creating brighter futures.</h2>
-          <p>
-            Through education, awareness, justice and real support, CB&apos;s World Foundation is working every day to turn pain into purpose and protect young lives.
-          </p>
-          <Link className="legacy-button primary compact" href="/foundation">
-            Learn More
-          </Link>
-        </div>
-        <Link className="legacy-video-card" href="/media">
-          <img src={missionImage} alt="Foundation community and memorial work" />
-          <div className="play-circle">▶</div>
-          <span>Watch Our Story</span>
-        </Link>
-      </section>
-
-      <section className="legacy-pillars-section">
-        {missionCards.map((card) => (
-          <Link href={card.title.toLowerCase() === "justice" ? "/justice-for-claudyo" : "/foundation"} className="legacy-pillar" key={card.title}>
-            <div className="legacy-pillar-icon">{card.icon}</div>
-            <h3>{card.title}</h3>
-            <p>{card.description || card.text}</p>
-          </Link>
+      <section className="v5-section v5-mission-grid">
+        {pillars.map((pillar) => (
+          <article className="v5-card v5-pillar" key={pillar.title}>
+            <span className="v5-icon" aria-hidden="true">{pillar.icon}</span>
+            <h2>{pillar.title}</h2>
+            <p>{pillar.text}</p>
+          </article>
         ))}
       </section>
 
-      <section className="legacy-justice-band">
+      <section className="v5-section v5-split">
         <div>
-          <span className="legacy-kicker">Justice for Claudyo</span>
-          <h2>{siteConfig.reward || "£20,000"} Reward</h2>
+          <p className="v5-kicker">Our Mission</p>
+          <h2>Building safer communities. Creating brighter futures.</h2>
           <p>
-            If you know anything that could help bring justice for Claudyo, please use the official reporting channels.
+            Through education, awareness, justice and real support, CB’s World
+            Foundation is working every day to turn pain into purpose and protect young lives.
+          </p>
+          <Link className="v5-btn v5-btn--primary" href="/foundation">
+            Learn more
+          </Link>
+        </div>
+        <div className="v5-video-card">
+          <img
+            src="https://www.camdennewjournal.co.uk/media/2025/07/1947ce92-eca3-47fa-903e-e4932f9c5bb7.jpg"
+            alt="Family and friends at the Ampthill estate memorial"
+          />
+          <Link href="/gallery" className="v5-play-card">View gallery</Link>
+        </div>
+      </section>
+
+      <section className="v5-section v5-justice-callout">
+        <div>
+          <p className="v5-kicker">Justice for Claudyo</p>
+          <h2>{siteConfig.reward || "£20,000"} reward appeal</h2>
+          <p>
+            If you know anything, please do the right thing. Information can be
+            given through the official police appeal or anonymously through Crimestoppers.
           </p>
         </div>
-        <div className="legacy-justice-actions">
-          <a className="legacy-button primary" href={siteConfig.policeAppealUrl} target="_blank" rel="noreferrer">
-            Submit Information
-          </a>
-          <a className="legacy-button ghost" href={`tel:${(siteConfig.crimestoppersPhone || "0800555111").replaceAll(" ", "")}`}>
-            Crimestoppers
+        <div className="v5-justice-actions">
+          <Link className="v5-btn v5-btn--primary" href="/justice-for-claudyo">
+            Find out more
+          </Link>
+          <a className="v5-btn v5-btn--ghost" href="https://mipp.police.uk/operation/01MPS23V46-PO1" target="_blank" rel="noreferrer">
+            Submit information
           </a>
         </div>
       </section>
 
-      <section className="legacy-cards-row">
-        <Link className="legacy-info-card" href="/claudyos-legacy">
-          <h3>Claudyo&apos;s Legacy</h3>
-          <p>Learn about Claudyo&apos;s life, dreams, family and the legacy he left behind.</p>
-          <span>Learn More →</span>
-        </Link>
-        <Link className="legacy-info-card" href="/gallery">
-          <h3>Gallery</h3>
-          <p>Photos and videos from Claudyo&apos;s life, memorials, events and foundation activities.</p>
-          <span>View Gallery →</span>
-        </Link>
-        <Link className="legacy-info-card" href="/legacy-wall">
-          <h3>Legacy Wall</h3>
-          <p>Leave a message, share a memory or light a candle in honour of Claudyo.</p>
-          <span>Visit Legacy Wall →</span>
-        </Link>
+      <section className="v5-section">
+        <div className="v5-section-head">
+          <div>
+            <p className="v5-kicker">Featured photos</p>
+            <h2>Claudyo’s life, family and legacy.</h2>
+          </div>
+          <Link href="/gallery" className="v5-text-link">View gallery →</Link>
+        </div>
+        <div className="v5-gallery-preview">
+          {featuredImages.map((image) => (
+            <figure key={image.src}>
+              <img src={image.src} alt={image.alt} />
+              <figcaption>{image.category}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
+      <section className="v5-section v5-news-section">
+        <div className="v5-section-head">
+          <div>
+            <p className="v5-kicker">Latest updates</p>
+            <h2>Keep up with the foundation.</h2>
+          </div>
+          <Link href="/news" className="v5-text-link">All news →</Link>
+        </div>
+        <div className="v5-news-grid">
+          {newsItems.map((item) => (
+            <Link href={item.href} className="v5-card v5-news-card" key={item.title}>
+              <span>{item.date}</span>
+              <h3>{item.title}</h3>
+              <p>Read more →</p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="v5-section v5-final-cta">
+        <p className="v5-kicker">Get involved</p>
+        <h2>Help continue Claudyo’s legacy.</h2>
+        <p>
+          Donate, volunteer, share the justice appeal, or leave a message on the Legacy Wall.
+        </p>
+        <div className="v5-actions v5-actions--center">
+          <Link className="v5-btn v5-btn--primary" href="/donate">Support the foundation</Link>
+          <Link className="v5-btn v5-btn--ghost" href="/legacy-wall">Visit Legacy Wall</Link>
+        </div>
       </section>
     </main>
   );

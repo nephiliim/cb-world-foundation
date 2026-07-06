@@ -1,22 +1,26 @@
 import Link from "next/link";
-import { heroImages, navItems, siteConfig } from "@/data/site";
 
-export function Footer() {
+export default function Footer() {
   return (
-    <footer className="site-footer">
-      <div className="footer-brand">
-        <img src={heroImages.logo} alt="CB's World Foundation logo" />
-        <div>
-          <h2>{siteConfig.name}</h2>
-          <p>{siteConfig.tagline}</p>
-        </div>
+    <footer className="site-footer-v5">
+      <div>
+        <img src="/images/logo/cb-world-logo.png" alt="CB's World Foundation logo" />
+        <h2>CB's World Foundation</h2>
+        <p>Building a legacy of love, justice and change in memory of Claudyo Jauad Lafayette.</p>
       </div>
-      <div className="footer-links">
-        {navItems.map((item) => <Link key={item.href} href={item.href}>{item.label}</Link>)}
+      <div>
+        <h3>Quick Links</h3>
+        <Link href="/claudyos-legacy">Claudyo’s Legacy</Link>
+        <Link href="/justice-for-claudyo">Justice for Claudyo</Link>
+        <Link href="/gallery">Gallery</Link>
+        <Link href="/legacy-wall">Legacy Wall</Link>
       </div>
-      <p className="footer-note">If you have information about Claudyo's case, use the official police appeal or call Crimestoppers anonymously on {siteConfig.crimestoppersPhone}.</p>
+      <div>
+        <h3>Support</h3>
+        <Link href="/donate">Donate</Link>
+        <Link href="/contact">Contact</Link>
+        <Link href="/foundation">Foundation</Link>
+      </div>
     </footer>
   );
 }
-
-export default Footer;

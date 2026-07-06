@@ -1,34 +1,20 @@
-# CB World Foundation - Legacy Style Homepage Update
+# CB World V5 Clean Homepage Update
 
-This update changes the homepage to the darker, cleaner charity style from the reference screenshot.
+Replace these files/folders into the project root:
 
-## Files included
+- app/page.tsx
+- app/globals.css
+- components/Header.tsx
+- components/Footer.tsx
+- public/images/logo/cb-world-logo.png
 
-- `app/page.tsx` - replacement homepage
-- `docs/homepage-legacy-style.css` - CSS to paste into `app/globals.css`
-
-## How to apply
-
-1. Copy `app/page.tsx` into your project and replace the existing file.
-2. Open `docs/homepage-legacy-style.css` and copy all CSS.
-3. Paste the CSS at the bottom of your existing `app/globals.css`.
-4. Run:
+Then run:
 
 ```cmd
 npm run build
 git add .
-git commit -m "Apply legacy style homepage"
+git commit -m "Apply V5 clean homepage"
 git push
 ```
 
-## Notes
-
-This expects your `data/site.ts` to export:
-
-- `siteConfig`
-- `heroImages`
-- `galleryImages`
-- `impactStats`
-- `missionCards`
-
-These already exist based on the latest V4 work.
+This update uses self-contained CSS classes prefixed with `v5-` so it avoids clashing with older page styles.

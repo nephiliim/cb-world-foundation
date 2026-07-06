@@ -58,14 +58,31 @@ export const foundationWork = [
 ];
 
 export const galleryImages = [
-  { src: "/images/hero/claudyo-main.jpg", alt: "Claudyo portrait", category: "Legacy" },
-  { src: "/images/logo/cb-world-logo.jpg", alt: "CB World Foundation logo", category: "Branding" },
-  { src: "/images/legacy/legacy-1.jpg", alt: "Legacy artwork one", category: "Legacy" },
-  { src: "/images/legacy/legacy-2.jpg", alt: "Legacy artwork two", category: "Legacy" },
-  { src: "/images/legacy/legacy-3.jpg", alt: "Legacy artwork three", category: "Legacy" },
-  { src: "/images/founders/founders-1.jpg", alt: "Foundation founders", category: "Foundation" },
-  { src: "/images/founders/founders-2.jpg", alt: "Foundation support", category: "Foundation" },
-  { src: "/images/gallery/gallery-1.jpg", alt: "Community gallery image", category: "Community" },
+  {
+    src: "https://crimestoppers-uk.org/getmedia/1d8e3981-ac90-4a4b-aa47-1c3594b32ce7/Claudyo-Lafayette-photo-1.png",
+    alt: "Claudyo Lafayette full portrait",
+    category: "Legacy",
+  },
+  {
+    src: "https://www.camdennewjournal.co.uk/media/2024/07/claudyo-1-1.jpg",
+    alt: "Claudyo Jauad Lafayette aged 17",
+    category: "Legacy",
+  },
+  {
+    src: "https://www.camdennewjournal.co.uk/media/2025/07/18f533fc-1ed6-4db1-bdff-3c416dda387b.jpg",
+    alt: "Claudyo’s family at his grave",
+    category: "Family",
+  },
+  {
+    src: "https://www.camdennewjournal.co.uk/media/2024/07/Claudyos-mother-and-her-partner-at-a-memorial.jpg",
+    alt: "Yzakia and Nuno at Claudyo’s memorial",
+    category: "Memorial",
+  },
+  {
+    src: "https://www.camdennewjournal.co.uk/media/2025/07/1947ce92-eca3-47fa-903e-e4932f9c5bb7.jpg",
+    alt: "Family and friends at the Ampthill estate memorial",
+    category: "Memorial",
+  },
 ];
 
 export const newsPosts = [

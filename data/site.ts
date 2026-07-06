@@ -78,3 +78,5 @@ export const contactTypes = [
   "Volunteer",
   "Support request",
 ];
+
+export const donationLink = siteConfig.donationLink;

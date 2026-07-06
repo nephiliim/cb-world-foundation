@@ -120,6 +120,7 @@ export const heroImages = {
   logo: "/images/logo/cb-world-logo.jpg",
   claudyo: "https://crimestoppers-uk.org/getmedia/1d8e3981-ac90-4a4b-aa47-1c3594b32ce7/Claudyo-Lafayette-photo-1.png",
   claudyoPortrait: "https://crimestoppers-uk.org/getmedia/1d8e3981-ac90-4a4b-aa47-1c3594b32ce7/Claudyo-Lafayette-photo-1.png",
+  claudyoNews: "https://www.camdennewjournal.co.uk/media/2024/07/claudyo-1-1.jpg",
   memorial: "https://www.camdennewjournal.co.uk/media/2024/07/Claudyos-mother-and-her-partner-at-a-memorial.jpg",
   family: "https://www.camdennewjournal.co.uk/media/2025/07/18f533fc-1ed6-4db1-bdff-3c416dda387b.jpg",
 };

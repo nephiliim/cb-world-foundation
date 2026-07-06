@@ -2,10 +2,13 @@ export const donationLink = "https://gofund.me/97c17c72b";
 
 export const siteConfig = {
   name: "CB's World Foundation",
-  tagline: "Honouring Claudyo. Building a legacy of love, justice and change.",
+  tagline: "Keeping Claudyo's Legacy Alive",
   description:
-    "A legacy-led foundation supporting families, raising awareness and creating safer communities in memory of Claudyo Jauad Lafayette.",
-  donationLink,
+    "A legacy-led foundation tackling knife crime, supporting families, and creating hope through community action.",
+  donationLink: "https://gofund.me/97c17c72b",
+  reward: "£20,000",
+  policeAppealUrl: "https://mipp.police.uk/operation/01MPS23V46-PO1",
+  crimestoppersPhone: "0800 555 111",
 };
 
 export const navItems = [

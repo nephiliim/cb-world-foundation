@@ -80,3 +80,4 @@ export const contactTypes = [
 ];
 
 export const donationLink = siteConfig.donationLink;
+export const heroImages = images;

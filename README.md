@@ -1,19 +1,17 @@
-# CB's World Foundation V5 Clean
+# CB World Foundation V6 Homepage Update
 
-Clean rebuild of the public website using Next.js 15, a single design system, real content, and Supabase-ready structure.
+Replace these files/folders in your project:
 
-## Setup
+- `app/page.tsx`
+- `components/home/` folder
 
-```bash
-npm install
+Then paste the CSS from `v6-homepage.css` at the **bottom** of `app/globals.css`.
+
+Run:
+
+```cmd
 npm run build
-npm run dev
+git add .
+git commit -m "Apply V6 homepage rebuild"
+git push
 ```
-
-## Environment variables
-
-Copy `.env.example` to `.env.local` and add your Supabase values.
-
-## Deployment
-
-Push to GitHub and Vercel will deploy automatically.

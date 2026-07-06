@@ -1,14 +1,14 @@
 import Link from "next/link";
-import { navItems, siteConfig } from "@/data/site";
+import { donationLink, navItems, siteConfig } from "@/data/site";
 
 export function Header() {
   return (
     <header className="site-header">
-      <Link className="brand" href="/">
-        <span className="brand-mark">CB</span>
+      <Link href="/" className="brand-block" aria-label="CB's World Foundation home">
+        <img src="/images/logo/cb-foundation-logo.jpg" alt="CB's World Foundation logo" />
         <span>
           <strong>{siteConfig.name}</strong>
-          <small>{siteConfig.tagline}</small>
+          <small>Long Live CB</small>
         </span>
       </Link>
       <nav className="desktop-nav" aria-label="Main navigation">
@@ -16,7 +16,7 @@ export function Header() {
           <Link key={item.href} href={item.href}>{item.label}</Link>
         ))}
       </nav>
-      <Link className="nav-donate" href="/donate">Donate</Link>
+      <a className="donate-button" href={donationLink} target="_blank" rel="noreferrer">♡ Donate</a>
     </header>
   );
 }

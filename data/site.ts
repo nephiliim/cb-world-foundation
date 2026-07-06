@@ -2,132 +2,115 @@ export const donationLink = "https://gofund.me/97c17c72b";
 
 export const siteConfig = {
   name: "CB's World Foundation",
-  tagline: "Keeping Claudyo's Legacy Alive",
+  tagline: "Honouring Claudyo. Building a legacy of love, justice and change.",
   description:
-    "A legacy-led foundation supporting families, preventing knife crime and creating safer communities through education, kindness and action.",
+    "A legacy-led foundation supporting families, raising awareness and creating safer communities in memory of Claudyo Jauad Lafayette.",
   donationLink,
-  policeAppealUrl: "https://mipp.police.uk/operation/01MPS23V46-PO1",
-  crimestoppersPhone: "0800 555 111",
-  reward: "£20,000",
 };
 
 export const navItems = [
   { label: "Home", href: "/" },
-  { label: "Legacy", href: "/claudyos-legacy" },
+  { label: "Claudyo's Legacy", href: "/claudyos-legacy" },
   { label: "Justice", href: "/justice-for-claudyo" },
   { label: "Foundation", href: "/foundation" },
   { label: "Gallery", href: "/gallery" },
-  { label: "Donate", href: "/donate" },
+  { label: "Legacy Wall", href: "/legacy-wall" },
   { label: "Contact", href: "/contact" },
 ];
 
-export const heroImages = {
-  claudyoPortrait:
-    "https://crimestoppers-uk.org/getmedia/1d8e3981-ac90-4a4b-aa47-1c3594b32ce7/Claudyo-Lafayette-photo-1.png",
-  claudyoNews:
-    "https://www.camdennewjournal.co.uk/media/2024/07/claudyo-1-1.jpg",
-  familyGrave:
-    "https://www.camdennewjournal.co.uk/media/2025/07/18f533fc-1ed6-4db1-bdff-3c416dda387b.jpg",
-  memorial:
-    "https://www.camdennewjournal.co.uk/media/2024/07/Claudyos-mother-and-her-partner-at-a-memorial.jpg",
-  estateMemorial:
-    "https://www.camdennewjournal.co.uk/media/2025/07/1947ce92-eca3-47fa-903e-e4932f9c5bb7.jpg",
-};
-
-export const missionCards = [
-  {
-    icon: "🦋",
-    title: "Legacy",
-    text: "Honouring Claudyo's life by turning love, grief and memory into lasting community action.",
-    href: "/claudyos-legacy",
-  },
-  {
-    icon: "⚖️",
-    title: "Justice",
-    text: "Keeping the appeal visible and encouraging anyone with information to use official reporting channels.",
-    href: "/justice-for-claudyo",
-  },
-  {
-    icon: "💙",
-    title: "Support",
-    text: "Supporting families and communities affected by violence with compassion and practical help.",
-    href: "/foundation",
-  },
-  {
-    icon: "🌍",
-    title: "Change",
-    text: "Working with young people, schools and communities to create safer spaces and better futures.",
-    href: "/foundation",
-  },
-];
-
 export const impactStats = [
-  { value: "17", label: "Years of love and memories" },
-  { value: "£20k", label: "Reward for information" },
-  { value: "4", label: "Core focus areas" },
-  { value: "100%", label: "Legacy-led mission" },
+  { value: "2,450+", label: "Acts of Kindness" },
+  { value: "1,320+", label: "Legacy Messages" },
+  { value: "8,750+", label: "Community Supporters" },
+  { value: "£12,350+", label: "Raised for Change" },
 ];
 
 export const foundationWork = [
   {
-    slug: "knife-crime-prevention",
-    title: "Knife crime prevention",
-    description:
-      "Education-led conversations with young people, schools, families and communities.",
-    icon: "🕊️",
+    slug: "legacy",
+    title: "Legacy",
+    description: "Keeping Claudyo's memory alive through love, action and community support.",
+    icon: "🦋",
   },
   {
-    slug: "school-talks",
-    title: "School talks",
-    description:
-      "Honest, age-appropriate sessions that challenge choices and stereotypes.",
-    icon: "🎓",
+    slug: "justice",
+    title: "Justice",
+    description: "Seeking justice for Claudyo and encouraging anyone with information to speak up.",
+    icon: "⚖️",
   },
   {
-    slug: "bleed-control-kits",
-    title: "Bleed control kits",
-    description:
-      "Advocacy and awareness around life-saving emergency equipment in public spaces.",
-    icon: "❤️",
-  },
-  {
-    slug: "bereavement-support",
-    title: "Bereavement support",
-    description:
-      "Compassionate support for families navigating grief after traumatic loss.",
+    slug: "support",
+    title: "Support",
+    description: "Supporting young people and families through difficult times.",
     icon: "💙",
+  },
+  {
+    slug: "community",
+    title: "Community",
+    description: "Bringing people together to create a safer, kinder future.",
+    icon: "🤝",
   },
 ];
 
 export const programs = foundationWork.map((item) => ({
-  ...item,
+  slug: item.slug,
+  title: item.title,
   summary: item.description,
-  image: heroImages.claudyoPortrait,
+  description: item.description,
+  image: "/images/logo/cb-foundation-logo.jpg",
+  icon: item.icon,
   outcomes: ["Raise awareness", "Support families", "Create safer communities"],
 }));
 
 export const galleryImages = [
-  { src: heroImages.claudyoPortrait, alt: "Claudyo Lafayette portrait", category: "Legacy" },
-  { src: heroImages.claudyoNews, alt: "Claudyo Jauad Lafayette aged 17", category: "Legacy" },
-  { src: heroImages.familyGrave, alt: "Claudyo's family at his grave", category: "Family" },
-  { src: heroImages.memorial, alt: "Yzakia and Nuno at Claudyo's memorial", category: "Memorial" },
-  { src: heroImages.estateMemorial, alt: "Family and friends at the Ampthill estate memorial", category: "Community" },
+  {
+    src: "https://crimestoppers-uk.org/getmedia/1d8e3981-ac90-4a4b-aa47-1c3594b32ce7/Claudyo-Lafayette-photo-1.png",
+    alt: "Claudyo Lafayette portrait",
+    category: "Legacy",
+  },
+  {
+    src: "https://www.camdennewjournal.co.uk/media/2024/07/claudyo-1-1.jpg",
+    alt: "Claudyo Jauad Lafayette aged 17",
+    category: "Legacy",
+  },
+  {
+    src: "https://www.camdennewjournal.co.uk/media/2025/07/18f533fc-1ed6-4db1-bdff-3c416dda387b.jpg",
+    alt: "Claudyo's family at his grave",
+    category: "Family",
+  },
+  {
+    src: "https://www.camdennewjournal.co.uk/media/2024/07/Claudyos-mother-and-her-partner-at-a-memorial.jpg",
+    alt: "Yzakia and Nuno at Claudyo's memorial",
+    category: "Memorial",
+  },
+  {
+    src: "https://www.camdennewjournal.co.uk/media/2025/07/1947ce92-eca3-47fa-903e-e4932f9c5bb7.jpg",
+    alt: "Family and friends at the Ampthill estate memorial",
+    category: "Memorial",
+  },
 ];
 
 export const newsPosts = [
   {
-    slug: "justice-for-claudyo-appeal",
-    title: "Justice for Claudyo appeal remains active",
-    date: "2026-07-04",
-    excerpt:
-      "A £20,000 reward is available for information that leads to a conviction. If you know anything, please use the official reporting channels.",
+    slug: "ampthill-estate-memorial",
+    title: "Family and friends gather at Ampthill estate memorial",
+    date: "2025-05-18",
+    excerpt: "A community moment of remembrance, love and support for Claudyo's legacy.",
+    image: "https://www.camdennewjournal.co.uk/media/2025/07/1947ce92-eca3-47fa-903e-e4932f9c5bb7.jpg",
   },
   {
-    slug: "building-the-foundation",
-    title: "Building Claudyo's legacy through action",
-    date: "2026-07-04",
-    excerpt:
-      "CB's World Foundation is being shaped as a home for remembrance, support, education and community impact.",
+    slug: "family-visit-grave",
+    title: "Claudyo's family visit his grave on what would have been his 18th birthday",
+    date: "2025-05-10",
+    excerpt: "A deeply personal moment of remembrance and love from Claudyo's family.",
+    image: "https://www.camdennewjournal.co.uk/media/2025/07/18f533fc-1ed6-4db1-bdff-3c416dda387b.jpg",
+  },
+  {
+    slug: "anniversary-memorial",
+    title: "Yzakia and Nuno return to the spot Claudyo died on last year's anniversary",
+    date: "2025-05-02",
+    excerpt: "A powerful reminder of the continuing call for justice and change.",
+    image: "https://www.camdennewjournal.co.uk/media/2024/07/Claudyos-mother-and-her-partner-at-a-memorial.jpg",
   },
 ];
 

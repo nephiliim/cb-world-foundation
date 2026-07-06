@@ -126,6 +126,7 @@ export const heroImages = {
   claudyoNews: "https://www.camdennewjournal.co.uk/media/2024/07/claudyo-1-1.jpg",
   memorial: "https://www.camdennewjournal.co.uk/media/2024/07/Claudyos-mother-and-her-partner-at-a-memorial.jpg",
   family: "https://www.camdennewjournal.co.uk/media/2025/07/18f533fc-1ed6-4db1-bdff-3c416dda387b.jpg",
+  familyGrave: "https://www.camdennewjournal.co.uk/media/2025/07/18f533fc-1ed6-4db1-bdff-3c416dda387b.jpg",
 };
 
 export const missionCards = [

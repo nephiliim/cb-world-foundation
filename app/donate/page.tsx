@@ -1,16 +1,2 @@
-import { CTA } from "@/components/CTA";
-import { donationLink } from "@/data/site";
-
-export default function DonatePage() {
-  return (
-    <main>
-      <section className="simple-page-header">
-        <span className="eyebrow">Donate</span>
-        <h1>Support the foundation and help carry Claudyo’s legacy forward.</h1>
-        <p>Your support helps build education, community support, acts of kindness and long-term impact.</p>
-        <a className="button primary" href={donationLink} target="_blank" rel="noreferrer">Donate via GoFundMe</a>
-      </section>
-      <CTA />
-    </main>
-  );
-}
+import { siteConfig } from "@/data/site";
+export default function DonatePage(){return <main><section className="page-hero"><div className="container"><span className="kicker">Donate</span><h1>Support the foundation.</h1><p className="section-copy">Help continue Claudyo's legacy through community action and support.</p><a className="button primary" href={siteConfig.donationLink} target="_blank" rel="noreferrer">Donate via GoFundMe</a></div></section></main>}

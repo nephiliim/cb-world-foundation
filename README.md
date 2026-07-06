@@ -1,20 +1,19 @@
-# CB World V5 Clean Homepage Update
+# CB's World Foundation V5 Clean
 
-Replace these files/folders into the project root:
+Clean rebuild of the public website using Next.js 15, a single design system, real content, and Supabase-ready structure.
 
-- app/page.tsx
-- app/globals.css
-- components/Header.tsx
-- components/Footer.tsx
-- public/images/logo/cb-world-logo.png
+## Setup
 
-Then run:
-
-```cmd
+```bash
+npm install
 npm run build
-git add .
-git commit -m "Apply V5 clean homepage"
-git push
+npm run dev
 ```
 
-This update uses self-contained CSS classes prefixed with `v5-` so it avoids clashing with older page styles.
+## Environment variables
+
+Copy `.env.example` to `.env.local` and add your Supabase values.
+
+## Deployment
+
+Push to GitHub and Vercel will deploy automatically.

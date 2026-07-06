@@ -1,10 +1,2 @@
 import { galleryImages } from "@/data/site";
-
-export default function GalleryPage() {
-  return (
-    <main>
-      <section className="page-hero text-only"><div><span className="eyebrow">Gallery</span><h1>Photos, memories and foundation moments.</h1><p>A growing archive of Claudyo's legacy and the work being carried forward.</p></div></section>
-      <section className="section-shell"><div className="gallery-grid-full">{galleryImages.map((image) => <figure key={image.src} className="photo-card"><img src={image.src} alt={image.alt} /><figcaption><strong>{image.category}</strong><span>{image.caption}</span></figcaption></figure>)}</div></section>
-    </main>
-  );
-}
+export default function GalleryPage(){return <main><section className="page-hero"><div className="container"><span className="kicker">Gallery</span><h1>Memories and moments.</h1><p className="section-copy">A respectful gallery of Claudyo, family, memorials and foundation work.</p></div></section><section className="section light"><div className="container"><div className="grid gallery-grid">{galleryImages.map(img=><div className="gallery-card" key={img.src}><img src={img.src} alt={img.alt}/><span>{img.category}</span></div>)}</div></div></section></main>}

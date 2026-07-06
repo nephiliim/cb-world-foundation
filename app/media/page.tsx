@@ -1,18 +1,1 @@
-import { PageHero } from "@/components/PageHero";
-import { Section } from "@/components/Section";
-
-export const metadata = { title: "Media" };
-
-export default function MediaPage() {
-  return (
-    <>
-      <PageHero eyebrow="Video and press" title="Media & Press" copy="A home for interviews, videos, press coverage and public awareness content." />
-      <Section>
-        <div className="container video-grid">
-          <div className="video-card"><video controls src="/videos/foundation-1.mp4" /></div>
-          <div className="video-card"><video controls src="/videos/foundation-2.mp4" /></div>
-        </div>
-      </Section>
-    </>
-  );
-}
+export default function Page(){return <main><section className="page-hero"><div className="container"><span className="kicker">CB's World Foundation</span><h1>Media</h1><p className="section-copy">This section is ready for the next build phase.</p></div></section></main>}

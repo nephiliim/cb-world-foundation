@@ -1,0 +1,1 @@
+export default function Page(){return <main><section className="page-hero"><div className="container"><span className="kicker">CB's World Foundation</span><h1>Get-involved</h1><p className="section-copy">This section is ready for the next build phase.</p></div></section></main>}

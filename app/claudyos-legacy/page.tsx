@@ -1,48 +1,7 @@
 import Link from "next/link";
-import { galleryImages, heroImages } from "@/data/site";
+import { CTA } from "@/components/CTA";
+import { galleryImages, images } from "@/data/site";
 
-const timeline = [
-  ["2006", "Claudyo was born — a much-loved son whose life would touch so many people."],
-  ["Growing up", "Remembered as loved, full of personality and surrounded by family and friends."],
-  ["17 years", "A young life full of memories, dreams and meaning."],
-  ["Today", "His legacy continues through the foundation, justice appeal and community action."],
-];
-
-export default function ClaudyosLegacyPage() {
-  return (
-    <main>
-      <section className="page-hero legacy-hero">
-        <div>
-          <span className="eyebrow">Claudyo's Legacy</span>
-          <h1>17 years. A lifetime of love. A legacy still moving people.</h1>
-          <p>Meet Claudyo first — the son, friend and young man behind the foundation.</p>
-          <div className="button-row"><Link className="button primary" href="/justice-for-claudyo">Justice for Claudyo</Link><Link className="button ghost" href="/legacy-wall">Leave a feather</Link></div>
-        </div>
-        <img src={heroImages.claudyoPortrait} alt="Claudyo Lafayette" />
-      </section>
-
-      <section className="split-section">
-        <img className="feature-image" src={heroImages.claudyoNews} alt="Claudyo Jauad Lafayette" />
-        <div>
-          <span className="eyebrow">Who Claudyo was</span>
-          <h2>A son, a friend and a young man whose memory continues to inspire action.</h2>
-          <p>This page is a space to honour Claudyo's life, memories and the love his family and community continue to carry for him.</p>
-        </div>
-      </section>
-
-      <section className="section-shell">
-        <div className="section-heading"><span className="eyebrow">Timeline</span><h2>A life remembered with love.</h2></div>
-        <div className="timeline">
-          {timeline.map(([year, text]) => <article key={year}><strong>{year}</strong><p>{text}</p></article>)}
-        </div>
-      </section>
-
-      <section className="section-shell">
-        <div className="section-heading"><span className="eyebrow">Memories</span><h2>Photos that tell part of the story.</h2></div>
-        <div className="gallery-preview">
-          {galleryImages.map((image) => <img key={image.src} src={image.src} alt={image.alt} />)}
-        </div>
-      </section>
-    </main>
-  );
+export default function LegacyPage() {
+  return <main><section className="page-hero"><div className="container split"><div><span className="kicker">Claudyo's Legacy</span><h1>Honouring Claudyo.</h1><p className="section-copy">A story of love, memory and a legacy that continues through community action.</p><Link className="button primary" href="/legacy-wall">Leave a Message</Link></div><img className="feature-image" src={images.claudyoPortrait} alt="Claudyo Lafayette" /></div></section><section className="section light"><div className="container split"><img className="feature-image" src={images.claudyoNews} alt="Claudyo" /><div><span className="kicker">Who Claudyo Was</span><h2 className="section-title">A son, a friend and a young man whose memory continues to move people.</h2><p className="section-copy">This page is a place to remember Claudyo's life, his impact, and the foundation built in his name.</p></div></div></section><section className="section"><div className="container"><span className="kicker">Memories</span><h2 className="section-title">Photos and moments</h2><div className="grid gallery-grid">{galleryImages.map(img => <div className="gallery-card" key={img.src}><img src={img.src} alt={img.alt} /><span>{img.category}</span></div>)}</div></div></section><CTA /></main>;
 }

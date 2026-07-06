@@ -129,21 +129,25 @@ export const missionCards = [
   {
     title: "Legacy",
     description: "Keeping Claudyo's memory alive through love and action.",
+    text: "Keeping Claudyo's memory alive through love and action.",
     icon: "🦋",
   },
   {
     title: "Justice",
     description: "Seeking justice for Claudyo and raising awareness.",
+    text: "Seeking justice for Claudyo and raising awareness.",
     icon: "⚖️",
   },
   {
     title: "Support",
     description: "Supporting young people and families through difficult times.",
+    text: "Supporting young people and families through difficult times.",
     icon: "💙",
   },
   {
     title: "Community",
     description: "Bringing communities together to create a safer future.",
+    text: "Bringing communities together to create a safer future.",
     icon: "🤝",
   },
 ];

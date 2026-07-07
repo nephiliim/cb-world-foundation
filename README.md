@@ -1,76 +1,74 @@
-# CB'S WORLD Functional CMS Update
+# CB'S WORLD Foundation Charity — Media Uploads Update
 
-This package turns the admin pages into usable CMS screens for:
+This update adds real Supabase Storage uploads for the Admin CMS.
 
-- Gallery media
-- News
-- Events
-- Anonymous feedback
-- Legacy Wall moderation
-- Site settings
+## Files included
+
+- `app/api/admin/upload/route.ts` — protected upload API route
+- `components/admin/MediaUploadField.tsx` — reusable admin upload component
+- `supabase/storage_media_bucket.sql` — creates the `cms-media` bucket
 
 ## Install
 
-Copy these folders/files into the project root:
+Copy the folders into your project root:
 
 ```text
-app/admin/dashboard/page.tsx
-app/admin/gallery/page.tsx
-app/admin/news/page.tsx
-app/admin/events/page.tsx
-app/admin/feedback/page.tsx
-app/admin/legacy-wall/page.tsx
-app/admin/settings/page.tsx
-app/api/admin/*
-app/api/public/*
-components/admin/*
-lib/adminAuth.ts
-lib/cmsApi.ts
-lib/cmsTables.ts
-supabase/cms_v3_tables.sql
+app/
+components/
+supabase/
 ```
 
 ## Supabase setup
 
-Open Supabase → SQL Editor and run:
+Open Supabase → SQL Editor → New Query.
+
+Paste and run:
 
 ```text
-supabase/cms_v3_tables.sql
+supabase/storage_media_bucket.sql
 ```
 
-## Environment variables
+It creates a public `cms-media` storage bucket.
 
-Local `.env.local` and Vercel must include:
+## Admin key
 
-```env
-NEXT_PUBLIC_SUPABASE_URL=...
-NEXT_PUBLIC_SUPABASE_ANON_KEY=...
-SUPABASE_SERVICE_ROLE_KEY=...
-ADMIN_API_KEY=...
+The upload API uses the existing `ADMIN_API_KEY` header.
+
+For local testing, open your browser console on the admin page and run:
+
+```js
+localStorage.setItem("cb_admin_key", "YOUR_ADMIN_API_KEY")
 ```
 
-The service role key must remain private. Do not commit it.
+Later, replace this with a proper login session.
 
-## Test
+## Use in admin forms
 
-```bash
+Import the upload field into any admin page:
+
+```tsx
+import { MediaUploadField } from "@/components/admin/MediaUploadField";
+```
+
+Example:
+
+```tsx
+<MediaUploadField
+  label="Upload gallery photo or video"
+  folder="gallery"
+  onUploaded={(file) => {
+    console.log(file.url);
+  }}
+/>
+```
+
+Use the returned `file.url` as the `image_url`, `video_url`, or media URL in your CMS tables.
+
+## Build and deploy
+
+```cmd
 npm run build
-```
-
-Then:
-
-```bash
 git add .
-git commit -m "Add functional Admin CMS"
+git commit -m "Add CMS media uploads"
 git push
 ```
-
-## Using the CMS
-
-Visit `/admin/dashboard`.
-
-Each CMS page asks for your `ADMIN_API_KEY`. Paste it once and press **Unlock CMS**. The key is stored in your browser local storage.
-
-## Current limitation
-
-This version uses image/video URLs. The next upgrade can add direct Supabase Storage upload buttons.

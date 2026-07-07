@@ -1,42 +1,51 @@
-# CB'S WORLD Foundation Charity — Bleed Control Kit Map
+# CB'S WORLD Foundation Charity - Event Hub Update
 
-## What this adds
-- Public page: `/bleed-control-kits`
-- Public API: `/api/bleed-kits`
-- Admin page: `/admin/bleed-kits`
-- Admin API: `/api/admin/bleed-kits`
-- Supabase table SQL: `supabase/bleed_kits.sql`
+This update makes Events the main content engine for the charity website.
+
+## Adds
+
+- `/events`
+- `/events/[slug]`
+- `/admin/events`
+- `/api/events`
+- `/api/admin/events`
+- `cms_events` Supabase table
+- Event impact fields
+- Event gallery fields
 
 ## Install
-Copy these folders into your project root, not inside `public`:
 
-- `app/bleed-control-kits`
-- `app/admin/bleed-kits`
-- `app/api/bleed-kits`
-- `app/api/admin/bleed-kits`
-- `components/bleed-kits`
-- `supabase/bleed_kits.sql`
+Copy these into your project root:
 
-## Supabase
-Open Supabase SQL Editor and run:
+- `app/events`
+- `app/admin/events`
+- `app/api/events`
+- `app/api/admin/events`
+- `components/events`
+- `lib/events.ts`
+- `app/event-hub.css`
+- `supabase/event_hub.sql`
 
-`supabase/bleed_kits.sql`
-
-## Add navigation
-In `data/site.ts`, add this to `navItems`:
+Add this to `app/layout.tsx`:
 
 ```ts
-{ label: "Bleed Kits", href: "/bleed-control-kits" },
+import "./event-hub.css";
 ```
 
-## Build and deploy
+Run `supabase/event_hub.sql` in Supabase SQL Editor.
+
+Then:
 
 ```cmd
 npm run build
 git add .
-git commit -m "Add bleed control kit map"
+git commit -m "Add event hub"
 git push
 ```
 
-## Note
-The first version shows a clean location list and map placeholder. The next version can add a real interactive map using Leaflet or Google Maps.
+## Suggested first entries
+
+- Knife Crime Awareness Day – Haverstock Secondary School
+- Awareness Session – Regent High School
+- St Patrick's Primary School Community Visit
+- Coram's Youth Centre Awareness Session

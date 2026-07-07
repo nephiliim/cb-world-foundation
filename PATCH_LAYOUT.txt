@@ -1,0 +1,3 @@
+Add this import near the top of app/layout.tsx:
+
+import "./event-hub.css";

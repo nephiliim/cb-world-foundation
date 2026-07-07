@@ -1,13 +1,18 @@
 import { AdminShell } from "@/components/admin/AdminShell";
-import { feedbackHighlights } from "@/data/admin";
 
-export default function AdminFeedbackPage() {
+export default function AdminfeedbackPage() {
   return (
-    <AdminShell title="Anonymous Feedback" subtitle="Publish supportive quotes without names or personal details.">
-      <div className="admin-v2-list">
-        {feedbackHighlights.map((item) => <article key={item.quote}><p>“{item.quote}”</p><span>{item.source}</span></article>)}
-      </div>
-      <div className="admin-v2-panel"><h2>Privacy rule</h2><p>Never publish names, phone numbers, private family details, addresses, or anything that identifies the person unless they give clear written permission.</p></div>
+    <AdminShell title="Feedback">
+      <section className="admin-panel">
+        <h2>Feedback Manager</h2>
+        <p>This module is ready for Supabase-backed create, edit, approve and publish actions.</p>
+        <form className="admin-form">
+          <input placeholder="Title" />
+          <textarea placeholder="Description, caption or content" rows={6} />
+          <select><option>Draft</option><option>Published</option><option>Pending approval</option><option>Approved</option></select>
+          <button type="button">Save</button>
+        </form>
+      </section>
     </AdminShell>
   );
 }

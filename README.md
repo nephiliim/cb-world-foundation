@@ -1,33 +1,72 @@
-# CB'S WORLD Foundation Charity - Admin CMS v2
+# CB'S WORLD Foundation Charity — Admin CMS v3-v5
 
-Copy these files into the project root.
+This package adds the next admin layer:
 
-## Important CSS step
-Add this import to `app/layout.tsx` under the existing CSS imports:
+- Admin dashboard modules
+- Gallery manager
+- News manager
+- Events manager
+- Anonymous feedback manager
+- Legacy Wall moderation page
+- Homepage/settings module
+- Supabase CMS SQL schema
+- Storage bucket plan
+- API route starter files
 
-```ts
-import "./admin/admin-v2.css";
+## Install
+
+Copy these folders/files into your project root:
+
+```text
+app/admin/
+app/api/admin/
+components/admin/
+lib/adminAuth.ts
+supabase/admin-cms-v3-v5.sql
 ```
 
-## Files included
-- `app/admin/dashboard/page.tsx`
-- `app/admin/gallery/page.tsx`
-- `app/admin/news/page.tsx`
-- `app/admin/events/page.tsx`
-- `app/admin/feedback/page.tsx`
-- `app/admin/settings/page.tsx`
-- `app/admin/admin-v2.css`
-- `components/admin/*`
-- `data/admin.ts`
-- `supabase/admin-cms-schema.sql`
+Add this import to `app/layout.tsx` or paste the CSS into `app/globals.css`:
+
+```ts
+import "./admin/admin-cms.css";
+```
+
+If Next complains about importing CSS from that location, paste `app/admin/admin-cms.css` at the bottom of `app/globals.css` instead.
+
+## Environment variables
+
+Add these to `.env.local` and Vercel:
+
+```env
+SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
+ADMIN_API_KEY=choose-a-long-random-admin-key
+```
+
+Keep `SUPABASE_SERVICE_ROLE_KEY` private. Never expose it as `NEXT_PUBLIC`.
+
+## Supabase setup
+
+Open Supabase → SQL Editor and run:
+
+```text
+supabase/admin-cms-v3-v5.sql
+```
+
+Then create Storage buckets:
+
+- `gallery-media`
+- `video-media`
+- `homepage-media`
 
 ## Build
+
 ```cmd
 npm run build
 git add .
-git commit -m "Add Admin CMS v2"
+git commit -m "Add Admin CMS v3-v5"
 git push
 ```
 
-## Supabase
-Run `supabase/admin-cms-schema.sql` in Supabase SQL Editor when ready to store content in the database.
+## Notes
+
+This is the CMS structure layer. The next step is wiring each form to real create/edit/delete actions and connecting the public pages to read from the CMS tables.

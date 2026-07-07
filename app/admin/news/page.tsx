@@ -1,9 +1,18 @@
 import { AdminShell } from "@/components/admin/AdminShell";
 
-export default function AdminNewsPage() {
+export default function AdminnewsPage() {
   return (
-    <AdminShell title="News" subtitle="Manage news content for the foundation.">
-      <div className="admin-v2-panel"><h2>News tools</h2><p>This module is ready for database wiring in the next step.</p></div>
+    <AdminShell title="News">
+      <section className="admin-panel">
+        <h2>News Manager</h2>
+        <p>This module is ready for Supabase-backed create, edit, approve and publish actions.</p>
+        <form className="admin-form">
+          <input placeholder="Title" />
+          <textarea placeholder="Description, caption or content" rows={6} />
+          <select><option>Draft</option><option>Published</option><option>Pending approval</option><option>Approved</option></select>
+          <button type="button">Save</button>
+        </form>
+      </section>
     </AdminShell>
   );
 }

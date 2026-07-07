@@ -1,0 +1,13 @@
+.page { background: linear-gradient(135deg,#061226,#0a2855); color:white; min-height:100vh; }
+.hero { padding: 82px 24px 34px; text-align:center; }
+.inner { max-width: 1120px; margin:0 auto; }
+.kicker { color:#77b7ff; text-transform:uppercase; letter-spacing:.2em; font-weight:900; font-size:.78rem; }
+.title { font-size: clamp(2.4rem, 6vw, 5.5rem); line-height:.96; letter-spacing:-.05em; margin: 12px 0 16px; }
+.lead { color:#d9e9ff; line-height:1.75; max-width:760px; margin:0 auto; }
+.grid { max-width:1120px; margin:0 auto; padding:48px 24px 80px; display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.card { border-radius:26px; padding:28px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.15); box-shadow:0 18px 50px rgba(0,0,0,.22); }
+.quote { font-size:1.05rem; line-height:1.7; color:#f4f8ff; margin:0 0 24px; }
+.label { color:#77b7ff; font-weight:900; text-transform:uppercase; letter-spacing:.12em; font-size:.78rem; }
+.notice { max-width:1120px; margin:0 auto 80px; padding:26px; border-radius:24px; background:#f6f9ff; color:#061226; }
+.notice p { margin:0; color:#40516a; line-height:1.65; }
+@media(max-width:900px){.grid{grid-template-columns:1fr}.hero{text-align:left}.lead{margin:0}}

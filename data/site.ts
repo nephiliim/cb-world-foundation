@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: "CB's World Foundation",
+  name: "CB’S WORLD Foundation Charity",
   tagline: "Long Live His Legacy",
   description:
     "Honouring Claudyo Jauad Lafayette by working to prevent knife crime, support families affected by violence, and create safer communities.",
@@ -16,22 +16,21 @@ export const navItems = [
   { label: "Foundation", href: "/foundation" },
   { label: "Gallery", href: "/gallery" },
   { label: "Legacy Wall", href: "/legacy-wall" },
+  { label: "Feedback", href: "/feedback" },
   { label: "Donate", href: "/donate" },
   { label: "Contact", href: "/contact" },
 ];
 
 export const images = {
   logo: "/images/logo/cb-world-logo.jpg",
-  claudyoPortrait:
-    "https://crimestoppers-uk.org/getmedia/1d8e3981-ac90-4a4b-aa47-1c3594b32ce7/Claudyo-Lafayette-photo-1.png",
-  claudyoNews: "https://www.camdennewjournal.co.uk/media/2024/07/claudyo-1-1.jpg",
-  familyGrave:
-    "https://www.camdennewjournal.co.uk/media/2025/07/18f533fc-1ed6-4db1-bdff-3c416dda387b.jpg",
-  memorial:
-    "https://www.camdennewjournal.co.uk/media/2024/07/Claudyos-mother-and-her-partner-at-a-memorial.jpg",
-  estateMemorial:
-    "https://www.camdennewjournal.co.uk/media/2025/07/1947ce92-eca3-47fa-903e-e4932f9c5bb7.jpg",
+  claudyoPortrait: "/images/gallery/claudyo-white-portrait.jpeg",
+  claudyoNews: "/images/gallery/claudyo-hoodie-portrait.jpeg",
+  familyGrave: "https://www.camdennewjournal.co.uk/media/2025/07/18f533fc-1ed6-4db1-bdff-3c416dda387b.jpg",
+  memorial: "https://www.camdennewjournal.co.uk/media/2024/07/Claudyos-mother-and-her-partner-at-a-memorial.jpg",
+  estateMemorial: "https://www.camdennewjournal.co.uk/media/2025/07/1947ce92-eca3-47fa-903e-e4932f9c5bb7.jpg",
 };
+
+export const heroImages = images;
 
 export const missionCards = [
   { title: "Legacy", icon: "🦋", text: "Keeping Claudyo's memory alive through love, action and community." },
@@ -41,15 +40,17 @@ export const missionCards = [
 ];
 
 export const impactStats = [
-  { value: "2,543+", label: "Young lives touched" },
-  { value: "156", label: "Bleed control kits" },
-  { value: "87", label: "School talks delivered" },
-  { value: "Every Day", label: "Lives we build for" },
+  { value: "£20,000", label: "Reward offered" },
+  { value: "17", label: "Years loved" },
+  { value: "Justice", label: "Campaign ongoing" },
+  { value: "Every Day", label: "Legacy continues" },
 ];
 
 export const galleryImages = [
   { src: images.claudyoPortrait, alt: "Claudyo Lafayette portrait", category: "Legacy" },
-  { src: images.claudyoNews, alt: "Claudyo Jauad Lafayette aged 17", category: "Legacy" },
+  { src: images.claudyoNews, alt: "Claudyo Jauad Lafayette", category: "Legacy" },
+  { src: "/images/gallery/claudyo-family-suit.jpeg", alt: "Family memory", category: "Family" },
+  { src: "/images/gallery/bereaved-parents-month.jpeg", alt: "Bereaved Parents Month awareness", category: "Awareness" },
   { src: images.familyGrave, alt: "Claudyo's family at his grave", category: "Family" },
   { src: images.memorial, alt: "Yzakia and Nuno at Claudyo's memorial", category: "Memorial" },
   { src: images.estateMemorial, alt: "Family and friends at Ampthill estate memorial", category: "Memorial" },
@@ -70,7 +71,15 @@ export const newsPosts = [
     excerpt: "Supporters can now leave messages of remembrance and support through the Legacy Wall.",
     image: images.familyGrave,
   },
+  {
+    slug: "bereaved-parents-month",
+    title: "Bereaved Parents Month awareness",
+    date: "2026-07-07",
+    excerpt: "July is recognised as National Bereaved Parents Month, reminding people to be gentle with grieving parents.",
+    image: "/images/gallery/bereaved-parents-month.jpeg",
+  },
 ];
+
 export const contactTypes = [
   "General contact",
   "Schools",
@@ -80,4 +89,3 @@ export const contactTypes = [
 ];
 
 export const donationLink = siteConfig.donationLink;
-export const heroImages = images;

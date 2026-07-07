@@ -1,46 +1,33 @@
-# CB’S WORLD Foundation Charity - Gallery and Feedback Update
+# CB'S WORLD Foundation Charity - Admin CMS v2
 
-This update adds:
+Copy these files into the project root.
 
-- New gallery page with photos and videos
-- Main homepage portrait changed in `data/site.ts`
-- Site name changed to `CB’S WORLD Foundation Charity`
-- Anonymous feedback highlights page
-- Captions for:
-  - Knife crime awareness event
-  - Bleed control kits
-  - Bereaved Parents Month
-  - Claudyo’s music and voice
-  - Graduation / “don’t judge a book by its cover” message
+## Important CSS step
+Add this import to `app/layout.tsx` under the existing CSS imports:
 
-## Install
-
-Copy these folders/files into your project root:
-
-```text
-app/gallery/page.tsx
-app/gallery/gallery.module.css
-app/feedback/page.tsx
-app/feedback/feedback.module.css
-data/media.ts
-data/site.ts
-public/images/gallery/
-public/videos/gallery/
+```ts
+import "./admin/admin-v2.css";
 ```
 
-Then run:
+## Files included
+- `app/admin/dashboard/page.tsx`
+- `app/admin/gallery/page.tsx`
+- `app/admin/news/page.tsx`
+- `app/admin/events/page.tsx`
+- `app/admin/feedback/page.tsx`
+- `app/admin/settings/page.tsx`
+- `app/admin/admin-v2.css`
+- `components/admin/*`
+- `data/admin.ts`
+- `supabase/admin-cms-schema.sql`
 
+## Build
 ```cmd
 npm run build
 git add .
-git commit -m "Add gallery media and anonymous feedback"
+git commit -m "Add Admin CMS v2"
 git push
 ```
 
-## Important
-
-The feedback page is anonymised. Before publishing real feedback, remove all names, phone numbers, faces, addresses, school names, or private details unless explicit permission has been given.
-
-## Note about videos
-
-The videos are stored in `public/videos/gallery`. This works, but later it would be better to move videos to Supabase Storage so the GitHub repository stays smaller and the website loads faster.
+## Supabase
+Run `supabase/admin-cms-schema.sql` in Supabase SQL Editor when ready to store content in the database.

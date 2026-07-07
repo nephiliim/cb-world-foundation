@@ -1,74 +1,42 @@
-# CB'S WORLD Foundation Charity — Media Uploads Update
+# CB'S WORLD Foundation Charity — Bleed Control Kit Map
 
-This update adds real Supabase Storage uploads for the Admin CMS.
-
-## Files included
-
-- `app/api/admin/upload/route.ts` — protected upload API route
-- `components/admin/MediaUploadField.tsx` — reusable admin upload component
-- `supabase/storage_media_bucket.sql` — creates the `cms-media` bucket
+## What this adds
+- Public page: `/bleed-control-kits`
+- Public API: `/api/bleed-kits`
+- Admin page: `/admin/bleed-kits`
+- Admin API: `/api/admin/bleed-kits`
+- Supabase table SQL: `supabase/bleed_kits.sql`
 
 ## Install
+Copy these folders into your project root, not inside `public`:
 
-Copy the folders into your project root:
+- `app/bleed-control-kits`
+- `app/admin/bleed-kits`
+- `app/api/bleed-kits`
+- `app/api/admin/bleed-kits`
+- `components/bleed-kits`
+- `supabase/bleed_kits.sql`
 
-```text
-app/
-components/
-supabase/
+## Supabase
+Open Supabase SQL Editor and run:
+
+`supabase/bleed_kits.sql`
+
+## Add navigation
+In `data/site.ts`, add this to `navItems`:
+
+```ts
+{ label: "Bleed Kits", href: "/bleed-control-kits" },
 ```
-
-## Supabase setup
-
-Open Supabase → SQL Editor → New Query.
-
-Paste and run:
-
-```text
-supabase/storage_media_bucket.sql
-```
-
-It creates a public `cms-media` storage bucket.
-
-## Admin key
-
-The upload API uses the existing `ADMIN_API_KEY` header.
-
-For local testing, open your browser console on the admin page and run:
-
-```js
-localStorage.setItem("cb_admin_key", "YOUR_ADMIN_API_KEY")
-```
-
-Later, replace this with a proper login session.
-
-## Use in admin forms
-
-Import the upload field into any admin page:
-
-```tsx
-import { MediaUploadField } from "@/components/admin/MediaUploadField";
-```
-
-Example:
-
-```tsx
-<MediaUploadField
-  label="Upload gallery photo or video"
-  folder="gallery"
-  onUploaded={(file) => {
-    console.log(file.url);
-  }}
-/>
-```
-
-Use the returned `file.url` as the `image_url`, `video_url`, or media URL in your CMS tables.
 
 ## Build and deploy
 
 ```cmd
 npm run build
 git add .
-git commit -m "Add CMS media uploads"
+git commit -m "Add bleed control kit map"
 git push
 ```
+
+## Note
+The first version shows a clean location list and map placeholder. The next version can add a real interactive map using Leaflet or Google Maps.

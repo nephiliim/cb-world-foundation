@@ -1,26 +1,28 @@
-import Link from "next/link";
+import React from "react";
 
-const nav = [
-  ["Dashboard", "/admin"],
-  ["Gallery", "/admin/gallery"],
-  ["News", "/admin/news"],
-  ["Events", "/admin/events"],
-  ["Feedback", "/admin/feedback"],
-  ["Legacy Wall", "/admin/legacy-wall"],
-  ["Settings", "/admin/settings"],
-];
+type AdminShellProps = {
+  title: string;
+  subtitle?: string;
+  children: React.ReactNode;
+};
 
-export function AdminShell({ title, children }: { title: string; children: React.ReactNode }) {
+export function AdminShell({
+  title,
+  subtitle,
+  children,
+}: AdminShellProps) {
   return (
-    <main className="admin-cms">
-      <aside className="admin-sidebar">
-        <div className="admin-brand">CB’S WORLD<br /><span>Foundation Charity</span></div>
-        <nav>{nav.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}</nav>
-      </aside>
-      <section className="admin-main">
-        <header className="admin-topbar"><h1>{title}</h1><p>Manage website content, approvals and updates.</p></header>
-        {children}
-      </section>
-    </main>
+    <div className="admin-v2-shell">
+      <header className="admin-v2-header">
+        <h1>{title}</h1>
+        {subtitle && (
+          <p className="admin-v2-subtitle">
+            {subtitle}
+          </p>
+        )}
+      </header>
+
+      <main>{children}</main>
+    </div>
   );
 }

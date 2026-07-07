@@ -1,18 +1,24 @@
 import { AdminShell } from "@/components/admin/AdminShell";
+import { CmsManager } from "@/components/admin/CmsManager";
 
-export default function AdmineventsPage() {
+export default function AdminEventsPage() {
   return (
-    <AdminShell title="Events">
-      <section className="admin-panel">
-        <h2>Events Manager</h2>
-        <p>This module is ready for Supabase-backed create, edit, approve and publish actions.</p>
-        <form className="admin-form">
-          <input placeholder="Title" />
-          <textarea placeholder="Description, caption or content" rows={6} />
-          <select><option>Draft</option><option>Published</option><option>Pending approval</option><option>Approved</option></select>
-          <button type="button">Save</button>
-        </form>
-      </section>
+    <AdminShell title="Events CMS" subtitle="Manage awareness events, community work and future campaigns.">
+      <CmsManager
+        module="events"
+        title="Events"
+        description="Add past or upcoming events. Published events can be shown on the website."
+        previewField="image_url"
+        fields={[
+          { name: "title", label: "Event title", placeholder: "Knife Crime Awareness Event" },
+          { name: "date", label: "Event date", type: "date" },
+          { name: "location", label: "Location", placeholder: "London" },
+          { name: "image_url", label: "Event image URL", type: "url" },
+          { name: "registration_url", label: "Registration / info URL", type: "url" },
+          { name: "description", label: "Description", type: "textarea" },
+          { name: "status", label: "Status", type: "select", options: ["published", "draft"] },
+        ]}
+      />
     </AdminShell>
   );
 }

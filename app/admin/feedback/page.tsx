@@ -1,18 +1,22 @@
 import { AdminShell } from "@/components/admin/AdminShell";
+import { CmsManager } from "@/components/admin/CmsManager";
 
-export default function AdminfeedbackPage() {
+export default function AdminFeedbackPage() {
   return (
-    <AdminShell title="Feedback">
-      <section className="admin-panel">
-        <h2>Feedback Manager</h2>
-        <p>This module is ready for Supabase-backed create, edit, approve and publish actions.</p>
-        <form className="admin-form">
-          <input placeholder="Title" />
-          <textarea placeholder="Description, caption or content" rows={6} />
-          <select><option>Draft</option><option>Published</option><option>Pending approval</option><option>Approved</option></select>
-          <button type="button">Save</button>
-        </form>
-      </section>
+    <AdminShell title="Feedback CMS" subtitle="Add anonymised feedback and testimonials without personal names.">
+      <CmsManager
+        module="feedback"
+        title="Anonymous feedback"
+        description="Keep names and personal details private. Use role labels like 'Bereaved parent' or 'Community member'."
+        previewField="image_url"
+        fields={[
+          { name: "quote", label: "Quote / feedback", type: "textarea", placeholder: "The support meant the world to me..." },
+          { name: "relationship", label: "Anonymous label", placeholder: "Bereaved parent" },
+          { name: "category", label: "Category", type: "select", options: ["Support", "Awareness", "Community", "Legacy", "Bereavement"] },
+          { name: "image_url", label: "Optional image URL", type: "url" },
+          { name: "status", label: "Status", type: "select", options: ["published", "draft"] },
+        ]}
+      />
     </AdminShell>
   );
 }

@@ -1,18 +1,21 @@
 import { AdminShell } from "@/components/admin/AdminShell";
+import { CmsManager } from "@/components/admin/CmsManager";
 
-export default function AdminsettingsPage() {
+export default function AdminSettingsPage() {
   return (
-    <AdminShell title="Settings">
-      <section className="admin-panel">
-        <h2>Settings Manager</h2>
-        <p>This module is ready for Supabase-backed create, edit, approve and publish actions.</p>
-        <form className="admin-form">
-          <input placeholder="Title" />
-          <textarea placeholder="Description, caption or content" rows={6} />
-          <select><option>Draft</option><option>Published</option><option>Pending approval</option><option>Approved</option></select>
-          <button type="button">Save</button>
-        </form>
-      </section>
+    <AdminShell title="Site Settings" subtitle="Manage editable website settings and homepage text.">
+      <CmsManager
+        module="settings"
+        title="Settings"
+        description="Add simple key/value settings. Later these can power the homepage automatically."
+        previewField="image_url"
+        fields={[
+          { name: "title", label: "Setting name", placeholder: "homepage_hero_title" },
+          { name: "value", label: "Value", type: "textarea" },
+          { name: "category", label: "Category", type: "select", options: ["Homepage", "Donation", "Contact", "Brand", "Impact"] },
+          { name: "status", label: "Status", type: "select", options: ["published", "draft"] },
+        ]}
+      />
     </AdminShell>
   );
 }

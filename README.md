@@ -1,72 +1,76 @@
-# CB'S WORLD Foundation Charity — Admin CMS v3-v5
+# CB'S WORLD Functional CMS Update
 
-This package adds the next admin layer:
+This package turns the admin pages into usable CMS screens for:
 
-- Admin dashboard modules
-- Gallery manager
-- News manager
-- Events manager
-- Anonymous feedback manager
-- Legacy Wall moderation page
-- Homepage/settings module
-- Supabase CMS SQL schema
-- Storage bucket plan
-- API route starter files
+- Gallery media
+- News
+- Events
+- Anonymous feedback
+- Legacy Wall moderation
+- Site settings
 
 ## Install
 
-Copy these folders/files into your project root:
+Copy these folders/files into the project root:
 
 ```text
-app/admin/
-app/api/admin/
-components/admin/
+app/admin/dashboard/page.tsx
+app/admin/gallery/page.tsx
+app/admin/news/page.tsx
+app/admin/events/page.tsx
+app/admin/feedback/page.tsx
+app/admin/legacy-wall/page.tsx
+app/admin/settings/page.tsx
+app/api/admin/*
+app/api/public/*
+components/admin/*
 lib/adminAuth.ts
-supabase/admin-cms-v3-v5.sql
+lib/cmsApi.ts
+lib/cmsTables.ts
+supabase/cms_v3_tables.sql
 ```
-
-Add this import to `app/layout.tsx` or paste the CSS into `app/globals.css`:
-
-```ts
-import "./admin/admin-cms.css";
-```
-
-If Next complains about importing CSS from that location, paste `app/admin/admin-cms.css` at the bottom of `app/globals.css` instead.
-
-## Environment variables
-
-Add these to `.env.local` and Vercel:
-
-```env
-SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
-ADMIN_API_KEY=choose-a-long-random-admin-key
-```
-
-Keep `SUPABASE_SERVICE_ROLE_KEY` private. Never expose it as `NEXT_PUBLIC`.
 
 ## Supabase setup
 
 Open Supabase → SQL Editor and run:
 
 ```text
-supabase/admin-cms-v3-v5.sql
+supabase/cms_v3_tables.sql
 ```
 
-Then create Storage buckets:
+## Environment variables
 
-- `gallery-media`
-- `video-media`
-- `homepage-media`
+Local `.env.local` and Vercel must include:
 
-## Build
+```env
+NEXT_PUBLIC_SUPABASE_URL=...
+NEXT_PUBLIC_SUPABASE_ANON_KEY=...
+SUPABASE_SERVICE_ROLE_KEY=...
+ADMIN_API_KEY=...
+```
 
-```cmd
+The service role key must remain private. Do not commit it.
+
+## Test
+
+```bash
 npm run build
+```
+
+Then:
+
+```bash
 git add .
-git commit -m "Add Admin CMS v3-v5"
+git commit -m "Add functional Admin CMS"
 git push
 ```
 
-## Notes
+## Using the CMS
 
-This is the CMS structure layer. The next step is wiring each form to real create/edit/delete actions and connecting the public pages to read from the CMS tables.
+Visit `/admin/dashboard`.
+
+Each CMS page asks for your `ADMIN_API_KEY`. Paste it once and press **Unlock CMS**. The key is stored in your browser local storage.
+
+## Current limitation
+
+This version uses image/video URLs. The next upgrade can add direct Supabase Storage upload buttons.

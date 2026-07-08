@@ -1,14 +1,12 @@
 import { NextResponse } from "next/server";
 import { requireAdminKey, supabaseAdmin } from "@/lib/adminAuth";
 
-const BUCKET = "cms-media";
-
-function safeFileName(name: string) {
+function safeName(name: string) {
   return name
     .toLowerCase()
-    .replace(/[^a-z0-9.\-_]+/g, "-")
+    .replace(/[^a-z0-9.]+/g, "-")
     .replace(/-+/g, "-")
-    .replace(/^-|-$/g, "");
+    .replace(/(^-|-$)/g, "");
 }
 
 export async function POST(request: Request) {
@@ -17,20 +15,20 @@ export async function POST(request: Request) {
 
     const formData = await request.formData();
     const file = formData.get("file");
-    const folder = String(formData.get("folder") || "gallery");
 
     if (!(file instanceof File)) {
       return NextResponse.json({ error: "No file uploaded" }, { status: 400 });
     }
 
+    const folder = safeName(String(formData.get("folder") || "uploads"));
+    const filename = `${folder}/${Date.now()}-${safeName(file.name)}`;
+
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
-    const cleanName = safeFileName(file.name || "upload");
-    const path = `${folder}/${Date.now()}-${cleanName}`;
 
     const { error } = await supabaseAdmin.storage
-      .from(BUCKET)
-      .upload(path, buffer, {
+      .from("cb-world-media")
+      .upload(filename, buffer, {
         contentType: file.type || "application/octet-stream",
         upsert: false,
       });
@@ -39,15 +37,19 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: error.message }, { status: 400 });
     }
 
-    const { data } = supabaseAdmin.storage.from(BUCKET).getPublicUrl(path);
+    const { data } = supabaseAdmin.storage
+      .from("cb-world-media")
+      .getPublicUrl(filename);
 
     return NextResponse.json({
-      path,
       url: data.publicUrl,
-      type: file.type,
+      path: filename,
       name: file.name,
+      type: file.type,
+      size: file.size,
     });
   } catch (error) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    console.error("Upload error", error);
+    return NextResponse.json({ error: "Unauthorized or upload failed" }, { status: 401 });
   }
 }

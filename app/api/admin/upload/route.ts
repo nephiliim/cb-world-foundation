@@ -27,7 +27,7 @@ export async function POST(request: Request) {
     }
 
     const folder = safeName(String(formData.get("folder") || "media-library"));
-    const filename = ${folder}/${Date.now()}-${safeName(file.name)};
+    const filename = `${folder}/${Date.now()}-${safeName(file.name)}`;
 
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);

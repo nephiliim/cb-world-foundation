@@ -119,8 +119,67 @@ export default function LegacyPage() {
           </div>
         </div>
       </section>
+{/* =========================================================
+    Mr O'Reilly's Tribute
+========================================================= */}
 
+<section className="section light">
+  <div className="container">
+
+    <span className="kicker">A Place to Remember</span>
+
+    <h2 className="section-title">
+      Mr O&apos;Reilly&apos;s Tribute to Claudyo
+    </h2>
+
+    <p className="section-copy">
+      During the unveiling of Claudyo&apos;s memorial bench, his mentor,
+      Mr O&apos;Reilly, delivered a heartfelt speech celebrating the
+      remarkable young man Claudyo was.
+    </p>
+
+    <p className="section-copy">
+      He spoke about Claudyo&apos;s kindness, his courage, his loyalty to
+      others and the positive impact he had on everyone around him.
+      His words remind us that Claudyo&apos;s legacy continues to live on
+      through the lives he touched and through the work of the
+      CB&apos;S WORLD Foundation Charity.
+    </p>
+
+    <div style={{ marginTop: "2rem" }}>
+      <video
+        controls
+        preload="metadata"
+        style={{
+          width: "100%",
+          borderRadius: "20px",
+          boxShadow: "0 20px 40px rgba(0,0,0,.25)"
+        }}
+      >
+        <source
+          src="/videos/mr-oreilly-speech.mp4"
+          type="video/mp4"
+        />
+
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    <p
+      style={{
+        textAlign: "center",
+        marginTop: "1.5rem",
+        opacity: 0.8,
+        fontStyle: "italic"
+      }}
+    >
+      "Gone from our sight, but never from our hearts."
+    </p>
+
+  </div>
+</section>
       <CTA />
+
     </main>
   );
 }

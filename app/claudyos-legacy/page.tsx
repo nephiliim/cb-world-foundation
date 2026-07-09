@@ -131,18 +131,22 @@ export default function LegacyPage() {
           </p>
 
           <div
-            style={{
-            maxWidth: "700px",
-            margin: "2rem auto 0",
+  style={{
+    display: "flex",
+    justifyContent: "center",
+    marginTop: "2rem",
   }}
 >
   <video
-          controls
-          preload="metadata"
-          style={{
-          width: "100%",
-          borderRadius: "20px",
-          boxShadow: "0 20px 40px rgba(0,0,0,.25)",
+    controls
+    preload="metadata"
+    style={{
+      width: "100%",
+      maxWidth: "560px",
+      aspectRatio: "16 / 9",
+      borderRadius: "16px",
+      backgroundColor: "#000",
+      boxShadow: "0 10px 30px rgba(0,0,0,.2)",
     }}
   >
     <source

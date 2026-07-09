@@ -136,3 +136,48 @@
     grid-template-columns: 1fr;
   }
 }
+
+
+.admin-v2-shell {
+    padding: 28px;
+    Background: #f4f7fb;
+    min-height: 100vh;
+    color: #061226;
+}
+
+.admin-v2-header {
+    margin-bottom: 24px;
+}
+
+.admin-v2-header h1 {
+    font-size: clamp(2.4rem, 6vw, 5rem);
+    line-height: 0.95;
+    margin: 0 0 10px;
+    letter-spacing: -0.05em;
+}
+
+.admin-v2-subtitle,
+,admin-v2-muted {
+    color: #52627a;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    
+}
+
+.admin-v2-nav {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 0 0 24px;
+}
+
+.admin-v2-nav a {
+    display: inline-flex;
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: #fff;;
+    color: #061226;
+    text-decoration: none;
+    font-weight: 800;
+    border: 1px solid rgba(6,18,38,.1);
+} 

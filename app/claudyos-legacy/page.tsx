@@ -113,7 +113,7 @@ export default function LegacyPage() {
           <span className="kicker">A Place to Remember</span>
 
           <h2 className="section-title">
-            Mr O&apos;Reilly&apos;s Tribute to Claudyo
+            Mr O&apos;Reilly&apos;s Tribute to Claudyo at the Memorial Bench
           </h2>
 
           <p className="section-copy">
@@ -130,20 +130,28 @@ export default function LegacyPage() {
             WORLD Foundation Charity.
           </p>
 
-          <div style={{ marginTop: "2rem" }}>
-            <video
-              controls
-              preload="metadata"
-              style={{
-                width: "100%",
-                borderRadius: "20px",
-                boxShadow: "0 20px 40px rgba(0,0,0,.25)",
-              }}
-            >
-              <source src="/videos/mr-oreilly-speech.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
+          <div
+            style={{
+            maxWidth: "700px",
+            margin: "2rem auto 0",
+  }}
+>
+  <video
+          controls
+          preload="metadata"
+          style={{
+          width: "100%",
+          borderRadius: "20px",
+          boxShadow: "0 20px 40px rgba(0,0,0,.25)",
+    }}
+  >
+    <source
+      src="/videos/mr-oreilly-speech.mp4"
+      type="video/mp4"
+    />
+    Your browser does not support the video tag.
+  </video>
+</div>
 
           <p
             style={{

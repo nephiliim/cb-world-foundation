@@ -36,6 +36,13 @@ export function AdminUploader({
 
     const result = await response.json();
 
+    let result: any;
+    try {
+      result = JSON.parse(text);
+    } catch {
+      throw new Error(text || "Upload failed");
+    }
+
     if (!response.ok) {
       throw new Error(result.error || "Upload failed");
     }

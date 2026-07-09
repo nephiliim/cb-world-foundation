@@ -7,6 +7,7 @@ import { siteConfig } from "@/data/site";
 import "./event-hub.css";
 import "./admin/command-centre.css";
 import "@/components/admin/AdminUploadStyles.css"; 
+import "./admin/media-library.css";
 
 export const metadata: Metadata = {
   title: siteConfig.name,

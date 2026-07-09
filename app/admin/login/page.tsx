@@ -26,8 +26,8 @@ export default function AdminLoginPage() {
     if (error) {
       setError(error.message);
       return;
-    }
-window.localStorage.setItem("admin_api_key", "
+    }, 
+    
     router.push("/admin");
     router.refresh();
   }

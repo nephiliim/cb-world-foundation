@@ -35,8 +35,8 @@
 
 .v6-portrait,
 .v6-gallery-grid img,
-.v6-link-card img,
-. object-position: center top;
+.v6-link-card img {
+  object-position: center top;
 }
 
 .v6-gallery-grid img,

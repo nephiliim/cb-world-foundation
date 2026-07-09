@@ -4,9 +4,11 @@ import { useState } from "react";
 
 type UploadedFile = {
   url: string;
+  path?: string;
   name: string;
   type: string;
-  size: number;
+  size?: number;
+  media?: unknown;
 };
 
 export function AdminUploader({
@@ -23,14 +25,12 @@ export function AdminUploader({
   const [error, setError] = useState("");
 
   async function uploadFile(file: File) {
-    const adminKey = window.localStorage.getItem("admin_api_key") || "";
     const formData = new FormData();
     formData.append("file", file);
     formData.append("folder", folder);
 
     const response = await fetch("/api/admin/upload", {
       method: "POST",
-      headers: { "x-admin-key": adminKey },
       body: formData,
     });
 
@@ -72,11 +72,13 @@ export function AdminUploader({
         <input
           type="file"
           multiple
-          accept="image/*,video/*,audio/*,.pdf"
+          accept="image/,video/,audio/*,.pdf"
           onChange={(event) => handleFiles(event.target.files)}
         />
         <strong>{uploading ? "Uploading..." : label}</strong>
-        <span>Choose files from your device. Images, videos, audio and PDFs are supported.</span>
+        <span>
+          Choose files from your device. Images, videos, audio and PDFs are supported.
+        </span>
       </label>
 
       {error && <p className="admin-upload-error">{error}</p>}
@@ -88,7 +90,10 @@ export function AdminUploader({
               <a href={file.url} target="_blank" rel="noreferrer">
                 {file.name}
               </a>
-              <button type="button" onClick={() => navigator.clipboard.writeText(file.url)}>
+              <button
+                type="button"
+                onClick={() => navigator.clipboard.writeText(file.url)}
+              >
                 Copy URL
               </button>
             </div>

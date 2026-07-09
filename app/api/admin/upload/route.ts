@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { requireAdminKey, supabaseAdmin } from "@/lib/adminAuth";
+import { supabaseAdmin } from "@/lib/adminAuth";
 
 function safeName(name: string) {
   return name
@@ -19,8 +19,6 @@ function getFileType(mimeType = "") {
 
 export async function POST(request: Request) {
   try {
-    requireAdminKey(request);
-
     const formData = await request.formData();
     const file = formData.get("file");
 
@@ -29,10 +27,7 @@ export async function POST(request: Request) {
     }
 
     const folder = safeName(String(formData.get("folder") || "media-library"));
-    const category = String(formData.get("category") || "General");
-    const tags = String(formData.get("tags") || "");
-    const description = String(formData.get("description") || "");
-    const filename = `${folder}/${Date.now()}-${safeName(file.name)}`;
+    const filename = ${folder}/${Date.now()}-${safeName(file.name)};
 
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
@@ -54,30 +49,20 @@ export async function POST(request: Request) {
 
     const publicUrl = publicData.publicUrl;
 
-    const { data: mediaData, error: mediaError } = await supabaseAdmin
-      .from("cms_media")
-      .upsert(
-        {
-          title: file.name.replace(/\.[^/.]+$/, ""),
-          description,
-          file_name: file.name,
-          file_url: publicUrl,
-          file_path: filename,
-          file_type: getFileType(file.type),
-          mime_type: file.type,
-          category,
-          tags: tags ? tags.split(",").map((tag) => tag.trim()).filter(Boolean) : [],
-          uploaded_by: "Admin",
-          status: "active",
-        },
-        { onConflict: "file_url" }
-      )
-      .select()
-      .single();
-
-    if (mediaError) {
-      return NextResponse.json({ error: mediaError.message }, { status: 400 });
-    }
+    await supabaseAdmin.from("cms_media").upsert(
+      {
+        title: file.name.replace(/\.[^/.]+$/, ""),
+        file_name: file.name,
+        file_url: publicUrl,
+        file_path: filename,
+        file_type: getFileType(file.type),
+        mime_type: file.type,
+        category: "General",
+        uploaded_by: "Admin",
+        status: "active",
+      },
+      { onConflict: "file_url" }
+    );
 
     return NextResponse.json({
       url: publicUrl,
@@ -85,10 +70,9 @@ export async function POST(request: Request) {
       name: file.name,
       type: file.type,
       size: file.size,
-      media: mediaData,
     });
   } catch (error) {
     console.error("Upload error", error);
-    return NextResponse.json({ error: "Unauthorized or upload failed" }, { status: 401 });
+    return NextResponse.json({ error: "Upload failed" }, { status: 500 });
   }
 }

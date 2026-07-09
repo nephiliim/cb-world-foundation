@@ -34,7 +34,7 @@ export function AdminUploader({
       body: formData,
     });
 
-    const result = await response.json();
+    const text = await response.text();
 
     let result: any;
     try {

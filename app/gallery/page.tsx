@@ -156,21 +156,7 @@ export default function GalleryPage() {
                       <source src={item.src} type="video/mp4" />
                     </video>
 
-                    <span
-                      aria-hidden="true"
-                      style={{
-                        position: "absolute",
-                        inset: 0,
-                        display: "grid",
-                        placeItems: "center",
-                        color: "#fff",
-                        fontSize: "2.5rem",
-                        textShadow: "0 4px 18px rgba(0,0,0,.65)",
-                        pointerEvents: "none",
-                      }}
-                    >
-                      ▶️
-                    </span>
+                   
                   </>
                 ) : (
                   <img src={item.src} alt={item.title} />

@@ -84,3 +84,44 @@ textarea { min-height:140px; }
   h1 { font-size:58px; }
   .container { width:min(100% - 28px, 1180px); }
 }
+
+.justice-split {
+  align-items: center;
+}
+
+.justice-image-wrap {
+  width: 100%;
+  max-width: 560px;
+  margin-inline: auto;
+}
+
+.justice-image {
+  display: block;
+  width: 100%;
+  border-radius: 28px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+  background: #061226;
+}
+
+.justice-image-portrait {
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.justice-image-landscape {
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+}
+
+@media (max-width: 900px) {
+  .justice-image-wrap {
+    max-width: 100%;
+  }
+
+  .justice-image-portrait,
+  .justice-image-landscape {
+    aspect-ratio: auto;
+    max-height: none;
+  }
+}

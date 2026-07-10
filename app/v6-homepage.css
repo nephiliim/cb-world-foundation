@@ -43,3 +43,21 @@
 .v6-link-card img {
   object-fit: cover;
 }
+.v6-portrait-wrap {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 430px);
+  text-align: center;
+}
+
+.v6-portrait-wrap .v6-portrait {
+  width: 100%;
+}
+
+.v6-signature-below {
+  margin-top: 18px;
+  font-family: cursive;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  color: #ffffff;
+  text-shadow: 0 3px 20px rgba(0, 0, 0, 0.45);
+}

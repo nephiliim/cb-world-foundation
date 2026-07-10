@@ -27,7 +27,7 @@ export default function JusticePage() {
 
               <a
                 className="button secondary"
-                href={tel:${siteConfig.crimestoppersPhone.replaceAll(" ", "")}}
+                href={`tel:${siteConfig.crimestoppersPhone.replaceAll(" ", "")}`}
               >
                 Call Crimestoppers
               </a>

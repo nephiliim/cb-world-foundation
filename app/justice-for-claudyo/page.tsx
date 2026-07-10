@@ -1,4 +1,4 @@
-[10:13, 10/07/2026] Derek Lamptey: import Link from "next/link";
+import Link from "next/link";
 import { images, siteConfig } from "@/data/site";
 
 export default function JusticePage() {

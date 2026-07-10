@@ -1,20 +1,3 @@
-import Link from "next/link";
-import { images, siteConfig } from "@/data/site";
-
-export default function JusticePage() {
-  return (
-    <main>
-      <section className="page-hero justice-hero">
-        <div className="container split justice-split">
-          <div>
-            <span className="kicker">Justice for Claudyo 🦋</span>
-
-            <h1>{siteConfig.reward} Reward</h1>
-
-            <p className="section-copy">
-              There is a reward for information that leads to a conviction of
-              those responsible. If you know anything, please
-[10:15, 10/07/2026] Derek Lamptey: import Link from "next/link";
 import { images, siteConfig } from "@/data/site";
 
 export default function JusticePage() {

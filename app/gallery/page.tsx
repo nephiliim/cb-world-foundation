@@ -87,19 +87,19 @@ export default function GalleryPage() {
 
           <div className={styles.feature}>
             <button
-              type="button"
-              className={styles.featureCard}
-              onClick={() => openLightbox(0)}
-              aria-label={Open ${featured.title}}
-              style={{
-                border: 0,
-                padding: 0,
-                cursor: "pointer",
-                background: "transparent",
-              }}
-            >
-              <img src={featured.src} alt={featured.title} />
-            </button>
+  type="button"
+  className={styles.featureCard}
+  onClick={() => openLightbox(0)}
+  aria-label={`Open ${featured.title}`}
+  style={{
+    border: 0,
+    padding: 0,
+    cursor: "pointer",
+    background: "transparent",
+  }}
+>
+  <img src={featured.src} alt={featured.title} />
+</button>
 
             <div className={styles.featureText}>
               <span className={styles.kicker}>Featured memory</span>
@@ -136,7 +136,7 @@ export default function GalleryPage() {
                 type="button"
                 className={styles.media}
                 onClick={() => openLightbox(index)}
-                aria-label={Open ${item.title}}
+                aria-label={`Open ${item.title}`}
                 style={{
                   display: "block",
                   width: "100%",

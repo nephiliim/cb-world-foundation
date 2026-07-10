@@ -6,6 +6,9 @@ type HeroImages = {
 };
 
 export function V6Mission({ heroImages }: { heroImages: HeroImages }) {
+  const posterImage =
+    heroImages.estateMemorial || heroImages.familyGrave || "";
+
   return (
     <section className="v6-section v6-mission">
       <div className="v6-section-copy">
@@ -14,9 +17,9 @@ export function V6Mission({ heroImages }: { heroImages: HeroImages }) {
         <h2>Building safer communities. Creating brighter futures.</h2>
 
         <p>
-          Through education, awareness, justice and real support,
-          CB&apos;s World Foundation is working every day to turn pain
-          into purpose and protect young lives.
+          Through education, awareness, justice and real support, CB&apos;s
+          World Foundation is working every day to turn pain into purpose and
+          protect young lives.
         </p>
 
         <Link className="v6-btn v6-btn-primary" href="/foundation">
@@ -24,35 +27,21 @@ export function V6Mission({ heroImages }: { heroImages: HeroImages }) {
         </Link>
       </div>
 
-      <div className="v6-video-card">
+      <div className="v6-story-video-card">
         <video
           controls
+          playsInline
           preload="metadata"
-          poster={heroImages.estateMemorial || heroImages.familyGrave}
-          style={{
-            width: "100%",
-            borderRadius: "24px",
-            display: "block"
-          }}
+          poster={posterImage}
         >
           <source
             src="/videos/foundation-video-1.mp4"
             type="video/mp4"
           />
-
-          Your browser does not support the video tag.
+          Your browser does not support the video.
         </video>
 
-        <span
-          style={{
-            display: "block",
-            marginTop: "1rem",
-            textAlign: "center",
-            fontWeight: 600
-          }}
-        >
-          Watch Our Story
-        </span>
+        <span>Watch Our Story</span>
       </div>
     </section>
   );

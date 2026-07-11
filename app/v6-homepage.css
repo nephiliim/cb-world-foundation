@@ -84,3 +84,155 @@
   font-weight: 700;
   letter-spacing: 0.04em;
 }
+/* ==========================
+   Homepage polish
+========================== */
+
+.v6-btn,
+.v6-video-card,
+.v6-story-video-card,
+.v6-gallery-card,
+.v6-card,
+.v6-pillar {
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease,
+    filter 220ms ease;
+}
+
+.v6-btn:hover {
+  transform: translateY(-2px);
+}
+
+.v6-btn-primary:hover {
+  box-shadow: 0 14px 34px rgba(26, 116, 255, 0.35);
+  filter: brightness(1.05);
+}
+
+.v6-btn-ghost:hover {
+  border-color: rgba(124, 185, 255, 0.7);
+  background: rgba(124, 185, 255, 0.08);
+}
+
+.v6-card:hover,
+.v6-pillar:hover,
+.v6-gallery-card:hover,
+.v6-video-card:hover,
+.v6-story-video-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.22);
+}
+
+.v6-gallery-card {
+  overflow: hidden;
+}
+
+.v6-gallery-card img,
+.v6-gallery-card video {
+  transition: transform 350ms ease;
+}
+
+.v6-gallery-card:hover img,
+.v6-gallery-card:hover video {
+  transform: scale(1.035);
+}
+
+.v6-section-copy,
+.v6-final-cta,
+.v6-gallery,
+.v6-cards,
+.v6-pillars,
+.v6-mission,
+.v6-justice {
+  animation: v6FadeUp 700ms ease both;
+}
+
+@keyframes v6FadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .v6-btn,
+  .v6-video-card,
+  .v6-story-video-card,
+  .v6-gallery-card,
+  .v6-card,
+  .v6-pillar,
+  .v6-gallery-card img,
+  .v6-gallery-card video,
+  .v6-section-copy,
+  .v6-final-cta,
+  .v6-gallery,
+  .v6-cards,
+  .v6-pillars,
+  .v6-mission,
+  .v6-justice {
+    animation: none;
+    transition: none;
+  }
+}
+ 
+/* ==========================
+   Safe homepage reveal
+========================== */
+
+@keyframes v6RevealUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.v6-home > section {
+  opacity: 1;
+  animation: v6RevealUp 700ms ease both;
+}
+
+.v6-home > section:nth-of-type(2) {
+  animation-delay: 80ms;
+}
+
+.v6-home > section:nth-of-type(3) {
+  animation-delay: 140ms;
+}
+
+.v6-home > section:nth-of-type(4) {
+  animation-delay: 200ms;
+}
+
+.v6-home > section:nth-of-type(5) {
+  animation-delay: 260ms;
+}
+
+.v6-home > section:nth-of-type(6) {
+  animation-delay: 320ms;
+}
+
+.v6-home > section:nth-of-type(7) {
+  animation-delay: 380ms;
+}
+
+.v6-home > section:nth-of-type(8) {
+  animation-delay: 440ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .v6-home > section {
+    animation: none;
+    transform: none;
+  }
+}

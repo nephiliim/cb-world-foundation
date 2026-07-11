@@ -6,11 +6,17 @@ export default function FeedbackPage() {
     <main className={styles.page}>
       <section className={styles.hero}>
         <div className={styles.inner}>
-          <span className={styles.kicker}>Anonymous feedback</span>
-          <h1 className={styles.title}>Words from people touched by the work.</h1>
+          <span className={styles.kicker}>Community Voices</span>
+
+          <h1 className={styles.title}>
+            Every voice helps shape our future.
+          </h1>
+
           <p className={styles.lead}>
-            These highlights are shared without names or personal details, keeping confidentiality protected while showing
-            the impact of CB’S WORLD Foundation Charity’s awareness work.
+            The work of CB'S WORLD Foundation is built on listening to families,
+            young people and our community. Every message, piece of feedback and
+            shared experience helps us continue Claudyo's legacy with compassion,
+            purpose and hope.
           </p>
         </div>
       </section>
@@ -19,17 +25,29 @@ export default function FeedbackPage() {
         {anonymousFeedback.map((item) => (
           <article className={styles.card} key={item.quote}>
             <p className={styles.quote}>“{item.quote}”</p>
-            <span className={styles.label}>{item.label}</span>
+
+            <span className={styles.label}>
+              {item.label}
+            </span>
           </article>
         ))}
       </section>
 
-      <div className={styles.notice}>
+      <section className={styles.notice}>
+        <h2>Your privacy matters.</h2>
+
         <p>
-          All feedback on this page is anonymised. Names, private details and identifying information should be removed
-          before anything is published publicly.
+          Every testimonial displayed here has been anonymised. Names,
+          locations and identifying details are removed before publication to
+          protect the privacy of everyone who shares their experience.
         </p>
-      </div>
+
+        <p>
+          Thank you to every family, volunteer, supporter and young person who
+          continues to believe in the mission of CB'S WORLD Foundation Charity.
+          Your encouragement helps us create lasting change.
+        </p>
+      </section>
     </main>
   );
 }

@@ -1,25 +1,82 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { galleryMedia } from "@/data/media";
 import styles from "./gallery.module.css";
 
+type GalleryItem = {
+  id: string | number;
+  title: string;
+  category?: string | null;
+  media_type?: "image" | "video" | null;
+  image_url?: string | null;
+  video_url?: string | null;
+  description?: string | null;
+  created_at?: string | null;
+};
+
 const categories = [
+  "All",
   "Claudyo",
   "Awareness",
   "Community",
   "Events",
   "Music",
   "Videos",
+  "Bleed Kits",
+  "Family",
+  "Memorial",
 ];
 
 export default function GalleryPage() {
-  const featured = galleryMedia[0];
-
+  const [items, setItems] = useState<GalleryItem[]>([]);
+  const [activeCategory, setActiveCategory] = useState("All");
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    async function loadGallery() {
+      try {
+        const response = await fetch("/api/gallery", {
+          cache: "no-store",
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+          throw new Error(result.error || "Could not load the gallery.");
+        }
+
+        setItems(result.data || []);
+      } catch (loadError) {
+        setError(
+          loadError instanceof Error
+            ? loadError.message
+            : "Could not load the gallery."
+        );
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadGallery();
+  }, []);
+
+  const filteredItems =
+    activeCategory === "All"
+      ? items
+      : items.filter((item) => item.category === activeCategory);
 
   const selectedItem =
-    selectedIndex !== null ? galleryMedia[selectedIndex] : null;
+    selectedIndex !== null ? filteredItems[selectedIndex] : null;
+
+  const featured = filteredItems[0] || items[0] || null;
+
+  function getMediaSource(item: GalleryItem) {
+    return item.media_type === "video"
+      ? item.video_url || item.image_url || ""
+      : item.image_url || "";
+  }
 
   function openLightbox(index: number) {
     setSelectedIndex(index);
@@ -31,31 +88,31 @@ export default function GalleryPage() {
 
   function showPrevious() {
     setSelectedIndex((current) => {
-      if (current === null) return 0;
-      return current === 0 ? galleryMedia.length - 1 : current - 1;
+      if (current === null || filteredItems.length === 0) return null;
+
+      return current === 0
+        ? filteredItems.length - 1
+        : current - 1;
     });
   }
 
   function showNext() {
     setSelectedIndex((current) => {
-      if (current === null) return 0;
-      return current === galleryMedia.length - 1 ? 0 : current + 1;
+      if (current === null || filteredItems.length === 0) return null;
+
+      return current === filteredItems.length - 1
+        ? 0
+        : current + 1;
     });
   }
 
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        closeLightbox();
-      }
+      if (selectedIndex === null) return;
 
-      if (event.key === "ArrowLeft") {
-        showPrevious();
-      }
-
-      if (event.key === "ArrowRight") {
-        showNext();
-      }
+      if (event.key === "Escape") closeLightbox();
+      if (event.key === "ArrowLeft") showPrevious();
+      if (event.key === "ArrowRight") showNext();
     }
 
     if (selectedIndex !== null) {
@@ -67,7 +124,11 @@ export default function GalleryPage() {
       document.body.style.overflow = "";
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [selectedIndex]);
+  }, [selectedIndex, filteredItems.length]);
+
+  useEffect(() => {
+    setSelectedIndex(null);
+  }, [activeCategory]);
 
   return (
     <main className={styles.page}>
@@ -82,31 +143,58 @@ export default function GalleryPage() {
           <p className={styles.lead}>
             A growing media library for CB&apos;S WORLD Foundation Charity —
             celebrating Claudyo&apos;s life, sharing the work being done in his
-            name, and raising awareness for young people and families.
+            name and raising awareness for young people and families.
           </p>
 
-          <div className={styles.feature}>
-            <button
-  type="button"
-  className={styles.featureCard}
-  onClick={() => openLightbox(0)}
-  aria-label={`Open ${featured.title}`}
-  style={{
-    border: 0,
-    padding: 0,
-    cursor: "pointer",
-    background: "transparent",
-  }}
->
-  <img src={featured.src} alt={featured.title} />
-</button>
+          {featured && (
+            <div className={styles.feature}>
+              <button
+                type="button"
+                className={styles.featureCard}
+                onClick={() => {
+                  const index = filteredItems.findIndex(
+                    (item) => item.id === featured.id
+                  );
 
-            <div className={styles.featureText}>
-              <span className={styles.kicker}>Featured memory</span>
-              <h2>{featured.title}</h2>
-              <p>{featured.description}</p>
+                  openLightbox(index >= 0 ? index : 0);
+                }}
+                aria-label={`Open ${featured.title}`}
+                style={{
+                  border: 0,
+                  padding: 0,
+                  cursor: "pointer",
+                }}
+              >
+                {featured.media_type === "video" ? (
+                  <video
+                    preload="metadata"
+                    poster={featured.image_url || undefined}
+                    muted
+                  >
+                    <source
+                      src={featured.video_url || ""}
+                      type="video/mp4"
+                    />
+                  </video>
+                ) : (
+                  <img
+                    src={featured.image_url || ""}
+                    alt={featured.title}
+                  />
+                )}
+              </button>
+
+              <div className={styles.featureText}>
+                <span className={styles.kicker}>Featured memory</span>
+                <h2>{featured.title}</h2>
+
+                <p>
+                  {featured.description ||
+                    "A memory shared through CB'S WORLD Foundation Charity."}
+                </p>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </section>
 
@@ -122,63 +210,107 @@ export default function GalleryPage() {
             aria-label="Gallery categories"
           >
             {categories.map((category) => (
-              <span className={styles.filter} key={category}>
+              <button
+                type="button"
+                className={styles.filter}
+                key={category}
+                onClick={() => setActiveCategory(category)}
+                aria-pressed={activeCategory === category}
+                style={{
+                  cursor: "pointer",
+                  opacity: activeCategory === category ? 1 : 0.72,
+                  outline:
+                    activeCategory === category
+                      ? "2px solid #77b7ff"
+                      : "none",
+                  outlineOffset: "2px",
+                }}
+              >
                 {category}
-              </span>
+              </button>
             ))}
           </div>
         </div>
 
-        <div className={styles.grid}>
-          {galleryMedia.map((item, index) => (
-            <article className={styles.card} key={item.src}>
-              <button
-                type="button"
-                className={styles.media}
-                onClick={() => openLightbox(index)}
-                aria-label={`Open ${item.title}`}
-                style={{
-                  display: "block",
-                  width: "100%",
-                  border: 0,
-                  padding: 0,
-                  cursor: "pointer",
-                  background: "transparent",
-                }}
-              >
-                {item.type === "video" ? (
-                  <>
-                    <video
-                      preload="metadata"
-                      poster={item.poster}
-                      muted
-                    >
-                      <source src={item.src} type="video/mp4" />
-                    </video>
+        {loading ? (
+          <div className={styles.note}>
+            <h2>Loading gallery...</h2>
+          </div>
+        ) : error ? (
+          <div className={styles.note}>
+            <h2>Gallery unavailable</h2>
+            <p>{error}</p>
+          </div>
+        ) : filteredItems.length > 0 ? (
+          <div className={styles.grid}>
+            {filteredItems.map((item, index) => {
+              const mediaSource = getMediaSource(item);
 
-                   
-                  </>
-                ) : (
-                  <img src={item.src} alt={item.title} />
-                )}
-              </button>
+              return (
+                <article className={styles.card} key={item.id}>
+                  <button
+                    type="button"
+                    className={styles.media}
+                    onClick={() => openLightbox(index)}
+                    aria-label={`Open ${item.title}`}
+                    style={{
+                      width: "100%",
+                      border: 0,
+                      padding: 0,
+                      cursor: "pointer",
+                    }}
+                  >
+                    {item.media_type === "video" ? (
+                      <video
+                        preload="metadata"
+                        poster={item.image_url || undefined}
+                        muted
+                      >
+                        <source
+                          src={item.video_url || ""}
+                          type="video/mp4"
+                        />
+                      </video>
+                    ) : (
+                      <img
+                        src={mediaSource}
+                        alt={item.title}
+                      />
+                    )}
+                  </button>
 
-              <div className={styles.body}>
-                <span className={styles.badge}>{item.category}</span>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-              </div>
-            </article>
-          ))}
-        </div>
+                  <div className={styles.body}>
+                    <span className={styles.badge}>
+                      {item.category || "Gallery"}
+                    </span>
+
+                    <h3>{item.title}</h3>
+
+                    <p>
+                      {item.description ||
+                        "A moment shared through the foundation."}
+                    </p>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        ) : (
+          <div className={styles.note}>
+            <h2>No published media yet.</h2>
+            <p>
+              Add and publish photos or videos through the Gallery CMS.
+            </p>
+          </div>
+        )}
 
         <div className={styles.note}>
           <h2>More memories can be added over time.</h2>
 
           <p>
-            The gallery is set up so future events, music clips, awareness
-            videos, photos and community work can be added without redesigning
-            the page each time.
+            New events, music clips, awareness videos, photographs and
+            community work can now be added directly through the admin
+            dashboard.
           </p>
         </div>
       </section>
@@ -244,13 +376,13 @@ export default function GalleryPage() {
                 background: "#020711",
               }}
             >
-              {selectedItem.type === "video" ? (
+              {selectedItem.media_type === "video" ? (
                 <video
-                  key={selectedItem.src}
+                  key={selectedItem.video_url}
                   controls
                   autoPlay
                   playsInline
-                  poster={selectedItem.poster}
+                  poster={selectedItem.image_url || undefined}
                   style={{
                     width: "100%",
                     maxHeight: "72vh",
@@ -258,14 +390,14 @@ export default function GalleryPage() {
                   }}
                 >
                   <source
-                    src={selectedItem.src}
+                    src={selectedItem.video_url || ""}
                     type="video/mp4"
                   />
                   Your browser does not support the video.
                 </video>
               ) : (
                 <img
-                  src={selectedItem.src}
+                  src={selectedItem.image_url || ""}
                   alt={selectedItem.title}
                   style={{
                     display: "block",
@@ -276,7 +408,7 @@ export default function GalleryPage() {
                 />
               )}
 
-              {galleryMedia.length > 1 && (
+              {filteredItems.length > 1 && (
                 <>
                   <button
                     type="button"
@@ -340,7 +472,7 @@ export default function GalleryPage() {
                   textTransform: "uppercase",
                 }}
               >
-                {selectedItem.category}
+                {selectedItem.category || "Gallery"}
               </span>
 
               <h2 style={{ margin: "7px 0 6px" }}>
@@ -348,7 +480,8 @@ export default function GalleryPage() {
               </h2>
 
               <p style={{ margin: 0, opacity: 0.78 }}>
-                {selectedItem.description}
+                {selectedItem.description ||
+                  "A moment shared through the foundation."}
               </p>
 
               <small
@@ -358,7 +491,7 @@ export default function GalleryPage() {
                   opacity: 0.55,
                 }}
               >
-                {selectedIndex + 1} of {galleryMedia.length}
+                {selectedIndex + 1} of {filteredItems.length}
               </small>
             </div>
           </div>

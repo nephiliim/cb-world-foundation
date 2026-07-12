@@ -8,6 +8,12 @@ type HeroImages = {
 type SiteConfig = {
   description: string;
   donationLink: string;
+  homepageHeroTitle?: string;
+  homepageHeroText?: string;
+  homepagePrimaryButtonText?: string;
+  homepagePrimaryButtonLink?: string;
+  homepageSecondaryButtonText?: string;
+  homepageSecondaryButtonLink?: string;
 };
 
 export function V6Hero({
@@ -17,6 +23,29 @@ export function V6Hero({
   siteConfig: SiteConfig;
   heroImages: HeroImages;
 }) {
+  const heroTitle =
+    siteConfig.homepageHeroTitle || "Long Live His Legacy";
+
+  const heroText =
+    siteConfig.homepageHeroText || siteConfig.description;
+
+  const primaryText =
+    siteConfig.homepagePrimaryButtonText || "Donate Now";
+
+  const primaryLink =
+    siteConfig.homepagePrimaryButtonLink ||
+    siteConfig.donationLink;
+
+  const secondaryText =
+    siteConfig.homepageSecondaryButtonText ||
+    "Read His Story";
+
+  const secondaryLink =
+    siteConfig.homepageSecondaryButtonLink ||
+    "/claudyos-legacy";
+
+  const primaryIsExternal = primaryLink.startsWith("http");
+
   return (
     <section className="v6-hero">
       <div className="v6-orb v6-orb-one" />
@@ -24,27 +53,40 @@ export function V6Hero({
 
       <div className="v6-hero-inner">
         <div className="v6-hero-copy">
-          <span className="v6-kicker">CB&apos;s World Foundation</span>
+          <span className="v6-kicker">
+            CB&apos;s World Foundation
+          </span>
 
           <h1>
-            <span>Long Live</span>
-            <strong>His Legacy</strong>
+            <strong>{heroTitle}</strong>
           </h1>
 
-          <p>{siteConfig.description}</p>
+          <p>{heroText}</p>
 
           <div className="v6-actions">
-            <a
-              className="v6-btn v6-btn-primary"
-              href={siteConfig.donationLink}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Donate Now
-            </a>
+            {primaryIsExternal ? (
+              <a
+                className="v6-btn v6-btn-primary"
+                href={primaryLink}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {primaryText}
+              </a>
+            ) : (
+              <Link
+                className="v6-btn v6-btn-primary"
+                href={primaryLink}
+              >
+                {primaryText}
+              </Link>
+            )}
 
-            <Link className="v6-btn v6-btn-ghost" href="/claudyos-legacy">
-              Read His Story
+            <Link
+              className="v6-btn v6-btn-ghost"
+              href={secondaryLink}
+            >
+              {secondaryText}
             </Link>
           </div>
         </div>

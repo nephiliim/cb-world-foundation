@@ -11,8 +11,9 @@ export default function JusticePage() {
             <h1>{siteConfig.reward} Reward</h1>
 
             <p className="section-copy">
-              There is a reward for information that leads to a conviction of
-              those responsible. If you know anything, please say something.
+              A £20,000 reward remains available for information that leads to the
+              conviction of those responsible for Claudyo&apos;s death. If you know
+              anything, however small it may seem, please come forward.
             </p>
 
             <div className="button-row">
@@ -59,11 +60,11 @@ export default function JusticePage() {
 
             <h2 className="section-title">My one and only CB.</h2>
 
-            <p className="section-copy">
-              One share could reach the right person who is willing to do the
-              right thing. Please don&apos;t scroll past without doing the right
-              thing.
-            </p>
+           <p className="section-copy">
+           One share could reach the person who knows something and is ready to
+            do the right thing. Please help us keep Claudyo&apos;s appeal visible
+            and encourage anyone with information to come forward.
+</p>
           </div>
         </div>
       </section>

@@ -3,7 +3,7 @@ export const cmsTables = {
   news: "cms_news",
   events: "cms_events",
   feedback: "cms_feedback",
-  legacy: "cms_legacy_messages",
+  legacy: "legacy_messages",
   settings: "cms_settings",
 } as const;
 

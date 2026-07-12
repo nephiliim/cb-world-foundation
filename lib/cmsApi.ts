@@ -44,7 +44,16 @@ export async function adminUpdate(module: CmsModule, request: Request) {
     if (!id) return NextResponse.json({ error: "Missing id" }, { status: 400 });
     const { data, error } = await supabaseAdmin
       .from(tableFor(module))
-      .update({ ...updates, updated_at: new Date().toISOString() })
+     .update({
+  ...updates,
+  approved:
+    updates.status === "published"
+      ? true
+      : updates.status === "draft"
+      ? false
+      : undefined,
+  updated_at: new Date().toISOString(),
+})
       .eq("id", id)
       .select()
       .single();

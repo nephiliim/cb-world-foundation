@@ -1,11 +1,23 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 
 type LegacyMessage = {
+  id: number;
   name: string;
   message: string;
-  createdAt: string;
+  created_at: string;
+};
+
+type MessagesResponse = {
+  messages?: LegacyMessage[];
+  error?: string;
+};
+
+type SubmitResponse = {
+  ok?: boolean;
+  message?: string;
+  error?: string;
 };
 
 export default function LegacyWallPage() {
@@ -13,13 +25,45 @@ export default function LegacyWallPage() {
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [loadingMessages, setLoadingMessages] = useState(true);
   const [notice, setNotice] = useState("");
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    async function loadMessages() {
+      try {
+        const response = await fetch("/api/legacy-messages", {
+          cache: "no-store",
+        });
+
+        const result = (await response.json()) as MessagesResponse;
+
+        if (!response.ok) {
+          throw new Error(result.error || "Could not load messages.");
+        }
+
+        setMessages(result.messages || []);
+      } catch (loadError) {
+        setError(
+          loadError instanceof Error
+            ? loadError.message
+            : "Could not load messages."
+        );
+      } finally {
+        setLoadingMessages(false);
+      }
+    }
+
+    loadMessages();
+  }, []);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    if (!message.trim()) {
+    const cleanMessage = message.trim();
+    const cleanName = name.trim() || "Anonymous";
+
+    if (!cleanMessage) {
       setError("Please write a message before submitting.");
       return;
     }
@@ -29,28 +73,31 @@ export default function LegacyWallPage() {
     setNotice("");
 
     try {
-      const newMessage: LegacyMessage = {
-        name: name.trim() || "Anonymous",
-        message: message.trim(),
-        createdAt: new Date().toISOString(),
-      };
-
       const response = await fetch("/api/legacy-messages", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(newMessage),
+        body: JSON.stringify({
+          name: cleanName,
+          message: cleanMessage,
+        }),
       });
 
+      const result = (await response.json()) as SubmitResponse;
+
       if (!response.ok) {
-        throw new Error("Your message could not be submitted.");
+        throw new Error(
+          result.error || "Your message could not be submitted."
+        );
       }
 
-      setMessages((current) => [newMessage, ...current]);
       setName("");
       setMessage("");
-      setNotice("Thank you. Your message has been added to the wall.");
+      setNotice(
+        result.message ||
+          "Thank you. Your message has been received and is awaiting approval."
+      );
     } catch (submitError) {
       setError(
         submitError instanceof Error
@@ -75,7 +122,9 @@ export default function LegacyWallPage() {
       <section className="page-hero legacy-wall-hero">
         <div className="container">
           <span className="kicker">Legacy Wall</span>
+
           <h1>Leave a message for Claudyo.</h1>
+
           <p className="section-copy">
             A place for memories, messages of love and support, and words that
             help keep Claudyo&apos;s legacy alive.
@@ -87,11 +136,12 @@ export default function LegacyWallPage() {
         <div className="container legacy-wall-layout">
           <div className="legacy-wall-form-panel">
             <span className="kicker">Share a Memory</span>
+
             <h2 className="section-title">Write from the heart.</h2>
 
             <p className="section-copy">
-              Your name is optional. Please share a respectful memory, tribute
-              or message of support.
+              Your name is optional. Messages are reviewed before appearing
+              publicly to protect the family and the community.
             </p>
 
             <form className="legacy-wall-form" onSubmit={handleSubmit}>
@@ -155,7 +205,7 @@ export default function LegacyWallPage() {
             </blockquote>
 
             <p>
-              Every message shared here becomes part of a growing collection of
+              Every approved message becomes part of a growing collection of
               love, remembrance and community support.
             </p>
           </div>
@@ -178,21 +228,23 @@ export default function LegacyWallPage() {
             )}
           </div>
 
-          {messages.length > 0 ? (
+          {loadingMessages ? (
+            <div className="legacy-wall-empty-card">
+              <p>Loading messages...</p>
+            </div>
+          ) : messages.length > 0 ? (
             <div className="legacy-wall-grid">
-              {messages.map((item, index) => (
-                <article
-                  className="legacy-message-card"
-                  key={`${item.createdAt}-${index}`}
-                >
+              {messages.map((item) => (
+                <article className="legacy-message-card" key={item.id}>
                   <span className="legacy-message-mark">“</span>
 
                   <p>{item.message}</p>
 
                   <footer>
-                    <strong>{item.name}</strong>
-                    <time dateTime={item.createdAt}>
-                      {formatDate(item.createdAt)}
+                    <strong>{item.name || "Anonymous"}</strong>
+
+                    <time dateTime={item.created_at}>
+                      {formatDate(item.created_at)}
                     </time>
                   </footer>
                 </article>
@@ -200,9 +252,11 @@ export default function LegacyWallPage() {
             </div>
           ) : (
             <div className="legacy-wall-empty-card">
-              <h3>Be the first to leave a message.</h3>
+              <h3>No approved messages yet.</h3>
+
               <p>
-                Messages of love, remembrance and support will appear here.
+                Approved messages of love, remembrance and support will appear
+                here.
               </p>
             </div>
           )}

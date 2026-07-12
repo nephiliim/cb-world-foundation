@@ -5,21 +5,35 @@ import { galleryImages, images } from "@/data/site";
 export default function LegacyPage() {
   return (
     <main>
-      <section className="page-hero">
-        <div className="container split">
-          <div>
-            <span className="kicker">Claudyo&apos;s Legacy</span>
-            <h1>Honouring Claudyo Jauad Lafayette.</h1>
-            <p className="section-copy">
-              A story of love, memory and a legacy that continues through community action.
-            </p>
-            <Link className="button primary" href="/legacy-wall">
-              Leave a Message
-            </Link>
-          </div>
-          <img className="feature-image" src={images.claudyoPortrait} alt="Claudyo Lafayette" />
-        </div>
-      </section>
+  <section className="page-hero legacy-hero">
+    <div className="container split">
+
+      <div>
+        <span className="kicker">Claudyo&apos;s Legacy</span>
+
+        <h1>Honouring Claudyo Jauad Lafayette.</h1>
+
+        <p className="section-copy">
+          A story of love, strength and remembrance. Claudyo&apos;s legacy lives
+          on through every family we support, every young person we inspire and
+          every life we help protect.
+        </p>
+
+        <Link className="button primary" href="/legacy-wall">
+          Leave a Message
+        </Link>
+      </div>
+
+            <div className="legacy-hero-image-wrap">
+        <img
+          className="legacy-hero-image"
+          src={images.claudyoPortrait}
+          alt="Claudyo Lafayette"
+        />
+      </div>
+
+    </div>
+  </section>
 
       <section className="section light">
         <div className="container">

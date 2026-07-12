@@ -14,7 +14,18 @@ export const supabaseAdmin = createClient(supabaseUrl, supabaseServiceRoleKey, {
 });
 
 export function requireAdminKey(request: Request) {
-  const adminKey = process.env.ADMIN_API_KEY;
-  const provided = request.headers.get("x-admin-key");
-  if (!adminKey || provided !== adminKey) throw new Error("Unauthorized");
+  const adminKey = process.env.ADMIN_API_KEY || "";
+  const provided = request.headers.get("x-admin-key") || "";
+
+  console.log("ADMIN KEY CHECK", {
+    serverKeyExists: Boolean(adminKey),
+    serverKeyLength: adminKey.length,
+    providedKeyExists: Boolean(provided),
+    providedKeyLength: provided.length,
+    keysMatch: provided === adminKey,
+  });
+
+  if (!adminKey || provided !== adminKey) {
+    throw new Error("Unauthorized");
+  }
 }

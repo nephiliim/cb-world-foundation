@@ -245,3 +245,27 @@
     transition: none;
   }
 }
+.featureCard {
+  display: block;
+  width: 100%;
+  appearance: none;
+  color: inherit;
+  font: inherit;
+}
+
+.featureCard img {
+  min-height: 430px;
+}
+
+.media {
+  width: 100%;
+  appearance: none;
+  color: inherit;
+  font: inherit;
+}
+
+.media img,
+.media video {
+  min-width: 100%;
+  min-height: 100%;
+}

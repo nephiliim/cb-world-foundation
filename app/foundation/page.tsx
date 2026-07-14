@@ -13,7 +13,7 @@ export default function FoundationPage() {
 
             <p className="section-copy">
               <strong>CB&apos;S WORLD Foundation Charity</strong> was founded by{" "}
-              <strong>Dydo Lafayette</strong>, Claudyo&apos;s mother, together
+              <strong>Yzakia Jauad</strong>, Claudyo&apos;s mother, together
               with <strong>Siobhan Hennessey</strong>.
             </p>
 
@@ -42,7 +42,7 @@ export default function FoundationPage() {
           <img
             className="feature-image"
             src="/images/foundation/founders.jpg"
-            alt="Dydo Lafayette and Siobhan Hennessey"
+            alt="Yzakia Jauad and Siobhan Hennessey"
           />
         </div>
       </section>
@@ -52,7 +52,7 @@ export default function FoundationPage() {
           <img
             className="foundation-story-image"
             src="/images/foundation/founders-red.jpg"
-            alt="Dydo Lafayette and Siobhan Hennessey"
+            alt="Yzakia Jauad and Siobhan Hennessey"
           />
 
           <div>
@@ -63,7 +63,7 @@ export default function FoundationPage() {
             </h2>
 
             <p className="section-copy">
-              Following the heartbreaking loss of Claudyo, Dydo made a promise
+              Following the heartbreaking loss of Claudyo, Yzakia made a promise
               that his name would continue to inspire hope and meaningful
               change.
             </p>
@@ -76,7 +76,7 @@ export default function FoundationPage() {
             </p>
 
             <p className="section-copy">
-              Dydo and Siobhan believe that every young person deserves
+              Yzakia and Siobhan believe that every young person deserves
               guidance, opportunity and the chance to feel safe. Through
               education, mentoring, awareness campaigns and community
               partnerships, they are working to help build a future in which
@@ -165,7 +165,7 @@ export default function FoundationPage() {
             another step towards creating the safer future Claudyo deserved.
           </p>
 
-          <strong>Dydo Lafayette and Siobhan Hennessey</strong>
+          <strong>Yzakia Jauad and Siobhan Hennessey</strong>
         </div>
       </section>
 

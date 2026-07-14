@@ -143,15 +143,11 @@ textarea { min-height:140px; }
 .foundation-story-image {
   display: block;
   width: 100%;
-  max-width: 560px;
   aspect-ratio: 4 / 5;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
-  margin-inline: auto;
-  padding: 10px;
-  border-radius: 28px;
-  background: #081833;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+  border-radius: 24px;
+  box-shadow: 0 24px 60px rgba(6, 18, 38, 0.18);
 }
 
 .foundation-value-grid {
@@ -591,10 +587,12 @@ textarea { min-height:140px; }
   width: 100%;
   justify-content: center;
 }
-.legacy-wall-intro-card{
-    align-self: start;
-    max-width: 420px;
-    height: fit-content;
+.legacy-wall-intro-card {
+  position: sticky;
+  top: 40px;
+  align-self: start;
+  max-width: 420px;
+  height: fit-content;
 }
 /* Legacy Wall message section readability */
 

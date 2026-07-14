@@ -5,7 +5,7 @@
 ### Home
 Sections:
 - Hero
-- Welcome from Dydo
+- Welcome from Yzakia
 - Mission summary
 - Claudyo's Legacy preview
 - Foundation work
@@ -18,7 +18,7 @@ Sections:
 ### About
 Sections:
 - About CB's World Foundation
-- Dydo's story
+- Yzakia's story
 - Meet the Founders
 - Why it was created
 - Mission statement

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { galleryMedia } from "@/data/media";
 import styles from "./gallery.module.css";
 
 type GalleryItem = {
@@ -13,6 +14,19 @@ type GalleryItem = {
   description?: string | null;
   created_at?: string | null;
 };
+
+const fallbackGalleryItems: GalleryItem[] = galleryMedia.map(
+  (item, index) => ({
+    id: `fallback-${index}`,
+    title: item.title,
+    description: item.description,
+    category: item.category,
+    media_type: item.type,
+    image_url: item.type === "image" ? item.src : item.poster || null,
+    video_url: item.type === "video" ? item.src : null,
+    created_at: null,
+  })
+);
 
 const categories = [
   "All",
@@ -28,11 +42,26 @@ const categories = [
 ];
 
 export default function GalleryPage() {
-  const [items, setItems] = useState<GalleryItem[]>([]);
+  const [items, setItems] =
+    useState<GalleryItem[]>(fallbackGalleryItems);
+
   const [activeCategory, setActiveCategory] = useState("All");
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [selectedIndex, setSelectedIndex] =
+    useState<number | null>(null);
+
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+
+  const filteredItems =
+    activeCategory === "All"
+      ? items
+      : items.filter((item) => item.category === activeCategory);
+
+  const selectedItem =
+    selectedIndex !== null
+      ? filteredItems[selectedIndex]
+      : null;
+
+  const featured = filteredItems[0] || items[0] || null;
 
   useEffect(() => {
     async function loadGallery() {
@@ -44,16 +73,22 @@ export default function GalleryPage() {
         const result = await response.json();
 
         if (!response.ok) {
-          throw new Error(result.error || "Could not load the gallery.");
+          throw new Error(
+            result.error || "Could not load the gallery."
+          );
         }
 
-        setItems(result.data || []);
-      } catch (loadError) {
-        setError(
-          loadError instanceof Error
-            ? loadError.message
-            : "Could not load the gallery."
+        const publishedItems = Array.isArray(result.data)
+          ? result.data
+          : [];
+
+        setItems(
+          publishedItems.length > 0
+            ? publishedItems
+            : fallbackGalleryItems
         );
+      } catch {
+        setItems(fallbackGalleryItems);
       } finally {
         setLoading(false);
       }
@@ -61,16 +96,6 @@ export default function GalleryPage() {
 
     loadGallery();
   }, []);
-
-  const filteredItems =
-    activeCategory === "All"
-      ? items
-      : items.filter((item) => item.category === activeCategory);
-
-  const selectedItem =
-    selectedIndex !== null ? filteredItems[selectedIndex] : null;
-
-  const featured = filteredItems[0] || items[0] || null;
 
   function getMediaSource(item: GalleryItem) {
     return item.media_type === "video"
@@ -88,7 +113,9 @@ export default function GalleryPage() {
 
   function showPrevious() {
     setSelectedIndex((current) => {
-      if (current === null || filteredItems.length === 0) return null;
+      if (current === null || filteredItems.length === 0) {
+        return null;
+      }
 
       return current === 0
         ? filteredItems.length - 1
@@ -98,7 +125,9 @@ export default function GalleryPage() {
 
   function showNext() {
     setSelectedIndex((current) => {
-      if (current === null || filteredItems.length === 0) return null;
+      if (current === null || filteredItems.length === 0) {
+        return null;
+      }
 
       return current === filteredItems.length - 1
         ? 0
@@ -108,11 +137,21 @@ export default function GalleryPage() {
 
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
-      if (selectedIndex === null) return;
+      if (selectedIndex === null) {
+        return;
+      }
 
-      if (event.key === "Escape") closeLightbox();
-      if (event.key === "ArrowLeft") showPrevious();
-      if (event.key === "ArrowRight") showNext();
+      if (event.key === "Escape") {
+        closeLightbox();
+      }
+
+      if (event.key === "ArrowLeft") {
+        showPrevious();
+      }
+
+      if (event.key === "ArrowRight") {
+        showNext();
+      }
     }
 
     if (selectedIndex !== null) {
@@ -141,9 +180,10 @@ export default function GalleryPage() {
           </h1>
 
           <p className={styles.lead}>
-            A growing media library for CB&apos;S WORLD Foundation Charity —
-            celebrating Claudyo&apos;s life, sharing the work being done in his
-            name and raising awareness for young people and families.
+            A growing media library for CB&apos;S WORLD Foundation
+            Charity — celebrating Claudyo&apos;s life, sharing the
+            work being done in his name and raising awareness for
+            young people and families.
           </p>
 
           {featured && (
@@ -163,6 +203,7 @@ export default function GalleryPage() {
                   border: 0,
                   padding: 0,
                   cursor: "pointer",
+                  background: "transparent",
                 }}
               >
                 {featured.media_type === "video" ? (
@@ -185,7 +226,10 @@ export default function GalleryPage() {
               </button>
 
               <div className={styles.featureText}>
-                <span className={styles.kicker}>Featured memory</span>
+                <span className={styles.kicker}>
+                  Featured memory
+                </span>
+
                 <h2>{featured.title}</h2>
 
                 <p>
@@ -218,7 +262,8 @@ export default function GalleryPage() {
                 aria-pressed={activeCategory === category}
                 style={{
                   cursor: "pointer",
-                  opacity: activeCategory === category ? 1 : 0.72,
+                  opacity:
+                    activeCategory === category ? 1 : 0.72,
                   outline:
                     activeCategory === category
                       ? "2px solid #77b7ff"
@@ -236,18 +281,16 @@ export default function GalleryPage() {
           <div className={styles.note}>
             <h2>Loading gallery...</h2>
           </div>
-        ) : error ? (
-          <div className={styles.note}>
-            <h2>Gallery unavailable</h2>
-            <p>{error}</p>
-          </div>
         ) : filteredItems.length > 0 ? (
           <div className={styles.grid}>
             {filteredItems.map((item, index) => {
               const mediaSource = getMediaSource(item);
 
               return (
-                <article className={styles.card} key={item.id}>
+                <article
+                  className={styles.card}
+                  key={item.id}
+                >
                   <button
                     type="button"
                     className={styles.media}
@@ -258,6 +301,7 @@ export default function GalleryPage() {
                       border: 0,
                       padding: 0,
                       cursor: "pointer",
+                      background: "transparent",
                     }}
                   >
                     {item.media_type === "video" ? (
@@ -297,9 +341,10 @@ export default function GalleryPage() {
           </div>
         ) : (
           <div className={styles.note}>
-            <h2>No published media yet.</h2>
+            <h2>No media in this category yet.</h2>
             <p>
-              Add and publish photos or videos through the Gallery CMS.
+              Choose another category or add new media through the
+              Gallery CMS.
             </p>
           </div>
         )}
@@ -308,9 +353,9 @@ export default function GalleryPage() {
           <h2>More memories can be added over time.</h2>
 
           <p>
-            New events, music clips, awareness videos, photographs and
-            community work can now be added directly through the admin
-            dashboard.
+            New events, music clips, awareness videos,
+            photographs and community work can be added directly
+            through the admin dashboard.
           </p>
         </div>
       </section>
@@ -393,6 +438,7 @@ export default function GalleryPage() {
                     src={selectedItem.video_url || ""}
                     type="video/mp4"
                   />
+
                   Your browser does not support the video.
                 </video>
               ) : (
@@ -491,7 +537,8 @@ export default function GalleryPage() {
                   opacity: 0.55,
                 }}
               >
-                {selectedIndex + 1} of {filteredItems.length}
+                {selectedIndex + 1} of{" "}
+                {filteredItems.length}
               </small>
             </div>
           </div>
